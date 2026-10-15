@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상심리학 중간고사 대비 실전 모의고사 (10회차 랜덤)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      min-height: 100vh;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="text-slate-800 flex flex-col items-center justify-center p-3 sm:p-6">
+
+  <!-- 메인 카드 컨테이너 -->
+  <main class="w-full max-w-2xl bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col transition-all duration-300">
+    
+    <!-- 탑 헤더 바 -->
+    <header class="bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-900 text-white p-5 sm:p-7 relative overflow-hidden">
+      <!-- 배경 장식 원형 -->
+      <div class="absolute -right-8 -top-8 w-32 h-32 bg-indigo-500/20 rounded-full blur-2xl"></div>
+      
+      <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wide bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          음악치료 석사 이상심리학 중간고사
+        </span>
+        <span id="round-indicator" class="text-xs font-extrabold px-3 py-1 rounded-full bg-amber-400/20 text-amber-300 border border-amber-400/40">
+          제 1 회차 / 총 10회차
+        </span>
+      </div>
+
+      <h1 class="text-xl sm:text-2xl font-extrabold tracking-tight">주관식 진단명 감별 실전 모의고사</h1>
+      <p class="text-xs sm:text-sm text-indigo-200 mt-1">범위: 1장 이상심리 기초 ~ 7장 8번(해리성 정체감 장애)</p>
+
+      <!-- 진행률 표시 바 -->
+      <div class="mt-5">
+        <div class="flex justify-between items-center text-xs font-semibold text-indigo-200 mb-1.5">
+          <span id="progress-question-text">문제 1 / 10</span>
+          <span id="round-score-text">이번 회차 점수: 0 / 10</span>
+        </div>
+        <div class="w-full bg-slate-950/40 rounded-full h-2.5 p-0.5 overflow-hidden">
+          <div id="progress-bar" class="bg-gradient-to-r from-emerald-400 to-teal-300 h-full rounded-full transition-all duration-300" style="width: 10%"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 퀴즈 진행 섹션 -->
+    <section id="quiz-section" class="p-5 sm:p-7 flex-1 flex flex-col justify-between">
+      <div>
+        <!-- 챕터 및 난이도 태그 -->
+        <div class="flex items-center justify-between gap-2 mb-3">
+          <span id="question-chapter-badge" class="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200">
+            제 1 장
+          </span>
+          <span class="text-xs text-slate-400 font-medium">단답형 진단명 맞추기</span>
+        </div>
+
+        <!-- 질문 지문 -->
+        <h2 id="question-title" class="text-base sm:text-lg font-bold text-slate-900 leading-snug mb-5">
+          문제를 불러오는 중입니다...
+        </h2>
+
+        <!-- 4지선다 옵션 리스트 -->
+        <div id="options-list" class="space-y-2.5">
+          <!-- 동적 옵션 생성 -->
+        </div>
+      </div>
+
+      <!-- 실시간 정답 & 해설 피드백 카드 -->
+      <div id="feedback-box" class="hidden mt-5 p-4 sm:p-5 rounded-2xl border transition-all duration-200">
+        <div id="feedback-status" class="flex items-center gap-2 font-extrabold text-sm sm:text-base mb-1.5">
+          <!-- 피드백 타이틀 -->
+        </div>
+        <p id="feedback-detail" class="text-xs sm:text-sm text-slate-700 leading-relaxed">
+          <!-- 상세 해설 -->
+        </p>
+        <button id="next-question-btn" class="mt-4 w-full py-3 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-bold rounded-xl text-sm transition shadow-lg shadow-indigo-600/30 flex items-center justify-center gap-1.5">
+          <span>다음 문제로</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <!-- 회차 완료 결과 섹션 -->
+    <section id="round-result-section" class="hidden p-6 sm:p-8 text-center flex-1">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 bg-indigo-50 text-indigo-600 rounded-3xl flex items-center justify-center mx-auto mb-4 text-3xl sm:text-4xl shadow-inner border border-indigo-100">
+        🎯
+      </div>
+      <span id="result-round-badge" class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700 mb-2">
+        제 1 회차 결과
+      </span>
+      <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">회차 모의고사 완료!</h2>
+      <p class="text-xs sm:text-sm text-slate-500 mb-5">방금 푼 10문항의 점수와 누적 학습 성적입니다.</p>
+
+      <!-- 스코어 대시보드 -->
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4">
+          <p class="text-xs text-slate-400 font-semibold mb-1">이번 회차 점수</p>
+          <p id="round-final-score" class="text-3xl font-extrabold text-indigo-600">0 / 10</p>
+        </div>
+        <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4">
+          <p class="text-xs text-slate-400 font-semibold mb-1">전체 누적 정답률</p>
+          <p id="total-cumulated-rate" class="text-3xl font-extrabold text-emerald-600">0%</p>
+        </div>
+      </div>
+
+      <!-- 이번 회차 오답 리뷰 영역 -->
+      <div id="wrong-answers-container" class="text-left mb-6 max-h-52 overflow-y-auto custom-scrollbar border border-slate-100 rounded-2xl p-3 bg-slate-50/60">
+        <!-- 오답 리스트 들어감 -->
+      </div>
+
+      <!-- 회차 진행 버튼 -->
+      <div class="flex flex-col sm:flex-row gap-2.5">
+        <button id="next-round-btn" class="flex-1 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-xl text-sm transition shadow-lg shadow-indigo-600/30">
+          다음 랜덤 10문제 생성 (2회차 풀기) ➔
+        </button>
+        <button id="retry-current-round-btn" class="sm:w-36 py-3.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold rounded-xl text-sm transition">
+          이번 회차 재도전
+        </button>
+      </div>
+    </section>
+
+    <!-- 10회차 전체 수료 종합 리포트 섹션 -->
+    <section id="final-graduation-section" class="hidden p-6 sm:p-8 text-center flex-1">
+      <div class="w-20 h-20 bg-amber-100 text-amber-600 rounded-3xl flex items-center justify-center mx-auto mb-4 text-4xl shadow-inner border border-amber-200">
+        🏆
+      </div>
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 mb-2">
+        총 10회차 (100문제) 완주 성공!
+      </span>
+      <h2 class="text-2xl font-extrabold text-slate-900 mb-2">중간고사 완벽 대비 완료!</h2>
+      <p class="text-xs sm:text-sm text-slate-600 mb-6 leading-relaxed">
+        1장부터 7장 8번까지의 모든 핵심 변별 진단명을 10회에 걸쳐 철저히 정복하셨습니다.
+      </p>
+
+      <div class="bg-gradient-to-br from-indigo-50 to-slate-100 border border-indigo-200 rounded-2xl p-5 mb-6 text-center">
+        <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">최종 합산 성적</p>
+        <p id="total-final-score-display" class="text-4xl font-black text-indigo-700 mb-1">0 / 100</p>
+        <p id="final-evaluation-text" class="text-xs sm:text-sm font-semibold text-indigo-950 mt-2">
+          평가 문구
+        </p>
+      </div>
+
+      <button id="restart-all-rounds-btn" class="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold rounded-2xl text-base transition shadow-xl shadow-indigo-600/30">
+        🔄 제 1회차부터 다시 시작하기
+      </button>
+    </section>
+
+  </main>
+
+  <script>
+    // ==========================================
+    // 이상심리학 전체 문제 은행 (1장 ~ 7장 8번 엄격 제한)
+    // ==========================================
+    const MASTER_QUESTION_POOL = [
+      // [1주차] 이상심리학의 기초
+      {
+        chapter: "제1장. 이상심리학 기초",
+        question: "어떤 사람이 심각한 반사회적 비행을 저지르고 타인에게 위협이 되면서도, 스스로는 전혀 죄책감이나 불안, 괴로움을 느끼지 않는다. 이상행동의 5가지 판별 기준 중 조증이나 반사회성 성격장애처럼 스스로 괴로워하지 않는 경우 이상으로 진단하기 어렵다는 한계를 지닌 기준은 무엇인가?",
+        options: ["주관적 고통", "심리적 부적응", "통계적 일탈", "사회문화적 규준 위반"],
+        answer: 0,
+        explanation: "주관적 고통(Subjective Suffering) 기준은 개인이 주관적으로 느끼는 불행감이나 괴로움을 평가하지만, 조증이나 반사회성 성격장애처럼 본인이 주관적 고통을 느끼지 못하는 경우 적용하기 어렵다는 명확한 한계가 있습니다."
+      },
+      {
+        chapter: "제1장. 이상심리학 기초",
+        question: "면담 시 내담자가 '최근 매사에 의욕이 없고 너무 슬프다'며 스스로 호소하는 주관적인 고통과, 임상가가 면담 중 직접 관찰한 눈맞춤 회피나 말속도 저하 같은 객관적 지표를 지칭하는 용어를 바르게 짝지은 것은 무엇인가?",
+        options: ["증상(Symptom) - 징후(Sign)", "징후(Sign) - 증상(Symptom)", "증후군(Syndrome) - 증상(Symptom)", "병인론(Etiology) - 징후(Sign)"],
+        answer: 0,
+        explanation: "내담자 본인이 주관적으로 느끼고 진술하는 것은 '증상(Symptom)'이고, 임상가의 관찰을 통해 객관적으로 파악 가능한 지표는 '징후(Sign)'입니다."
+      },
+      {
+        chapter: "제1장. 이상심리학 기초",
+        question: "지능검사(IQ) 결과 평균 100에서 표준편차 15를 기준으로, 정규분포의 평균에서 ±2 표준편차 이상 벗어난 IQ 70 미만을 지적 결함으로 판단하는 이상심리 판별 기준은 무엇인가?",
+        options: ["통계적 일탈", "주관적 고통", "사회문화적 규준 위반", "위험성"],
+        answer: 0,
+        explanation: "통계적 일탈(Statistical Deviance)은 한 사람의 특성이나 행동이 집단의 평균적 정상 분포에서 통계적으로 크게 벗어났을 때(통상 평균 ±2SD)를 이상으로 간주하는 기준입니다."
+      },
+
+      // [2주차] 신경발달장애
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "8세 아동이 눈을 깜빡이거나 어깨를 으쓱하는 복합 운동 틱과 함께 헛기침을 하거나 킁킁거리는 음성 틱을 경과 중 모두 나타내고 있다. 이러한 틱 증상이 1년 이상 지속되고 18세 이전에 시작되었을 때 내려지는 진단명은 무엇인가?",
+        options: ["뚜렛장애", "지속성 운동 또는 음성 틱장애", "일과성 틱장애", "상동증적 운동장애"],
+        answer: 0,
+        explanation: "뚜렛장애(Tourette's Disorder)는 여러 운동 틱과 1가지 이상의 음성 틱이 '모두' 존재하고, 증상이 최소 1년 이상 지속되며 18세 이전에 발병하는 신경발달장애입니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "지능지수(IQ)나 문법 구사력, 어휘력 자체는 정상 수준이나, 대화 상대나 상황의 맥락에 맞추어 말을 바꾸지 못하고, 대화 차례 지키기나 은유 및 숨은 의미를 이해하는 등 언어의 사회적·실용적 규칙 준수에 지속적인 결함을 보이는 장애는 무엇인가?",
+        options: ["사회적(실용적) 의사소통장애", "언어장애", "말소리장애", "자폐스펙트럼장애"],
+        answer: 0,
+        explanation: "사회적(실용적) 의사소통장애는 어휘나 문법 구조는 정상이나, 대화 맥락과 사회적 의사소통 규칙을 활용하는 실용적(화용론적) 기능에만 선택적 결함이 있는 장애입니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "표준화된 개별 지능검사 결과 IQ 70 미만의 지적 기능 결함을 보이고, 개념적·사회적·실행적 영역에서 일상 적응 기능에 유의미한 손상을 보이며 발달 시기에 시작되는 장애는 무엇인가?",
+        options: ["지적장애", "특정학습장애", "발달적 협응장애", "자폐스펙트럼장애"],
+        answer: 0,
+        explanation: "지적장애(Intellectual Disability)는 발달 시기에 발병하여 IQ 70 미만의 지적 기능 저하와 적응 기능(개념·사회·실행 영역)의 결함이 공존할 때 진단됩니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "사회적 눈맞춤 결여, 정서적 상호교류 실패, 마음이론(Theory of mind) 결함과 함께 손을 퍼덕거리거나 특정 물체에만 집착하고 동일한 일과나 루틴을 엄격히 고집하는 상동 행동을 보이는 신경발달장애는 무엇인가?",
+        options: ["자폐스펙트럼장애", "사회적 의사소통장애", "주의력결핍 과잉행동장애", "반응성 애착장애"],
+        answer: 0,
+        explanation: "자폐스펙트럼장애(ASD)는 ① 사회적 의사소통 및 상호작용의 지속적 결함과 ② 제한적이고 반복적인 행동·흥미·상동 행동 패턴을 핵심 진단 기준으로 합니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "수업 시간에 끊임없이 몸을 뒤틀고 자리를 이탈하며, 질문이 끝나기도 전에 불쑥 대답하고 차례를 기다리지 못하는 과잉행동-충동성과 부주의 증상이 12세 이전에 시작되어 가정과 학교 2곳 이상에서 나타나는 장애는?",
+        options: ["주의력결핍 과잉행동장애(ADHD)", "파괴적 기분조절부전장애", "품행장애", "발달적 협응장애"],
+        answer: 0,
+        explanation: "ADHD는 부주의 및 과잉행동-충동성 증상이 최소 6개월 이상 지속되며, 몇 가지 증상이 12세 이전에 나타나고 가정·학교 등 2개 이상의 환경에서 확인되어야 합니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "지능은 정상 수준이지만, 나이나 학년에 기대되는 수준에 비해 단어를 정확하고 유창하게 읽지 못하는 난독증이나 산술 계산, 수학적 추론에 뚜렷한 곤란을 겪는 장애는 무엇인가?",
+        options: ["특정학습장애", "지적장애", "언어장애", "느린 학습자"],
+        answer: 0,
+        explanation: "특정학습장애(Specific Learning Disorder)는 정상 지능을 가지고 있음에도 읽기(난독증), 쓰기, 수학 등 특정 학업 영역에서 지속적인 습득 결함을 나타냅니다."
+      },
+      {
+        chapter: "제2장. 신경발달장애",
+        question: "단추 잠그기, 가위질, 숟가락 쥐기, 달리기나 계단 오르기 등의 운동 협응 기술 습득이 또래에 비해 현저히 지연되고 움직임이 매우 서투르며 부정확한 신경발달장애는 무엇인가?",
+        options: ["발달적 협응장애", "상동증적 운동장애", "뚜렛장애", "지적장애"],
+        answer: 0,
+        explanation: "발달적 협응장애(Developmental Coordination Disorder)는 운동 기술의 습득과 실행이 발달 연령에 비해 현저히 떨어져 일상적 협응 과제에 서투름을 보이는 장애입니다."
+      },
+
+      // [3주차] 조현병 스펙트럼 및 기타 정신병적 장애
+      {
+        chapter: "제3장. 조현병 스펙트럼",
+        question: "24세 청년이 누군가 자신을 독살하려 한다는 피해망상과 명령 환청, 사고 탈선과 지리멸렬한 언어를 보이기 시작했다. 이러한 조현병 활성기 증상이 현재 3개월째 지속되고 있을 때 내려지는 진단명은 무엇인가?",
+        options: ["조현양상장애", "조현병", "단기정신병적장애", "망상장애"],
+        answer: 0,
+        explanation: "조현병의 진단 증상을 충족하지만 전체 유병 기간이 '1개월 이상 ~ 6개월 미만'인 경우 조현양상장애(Schizophreniform Disorder)로 진단합니다. (6개월 이상이면 조현병)."
+      },
+      {
+        chapter: "제3장. 조현병 스펙트럼",
+        question: "심한 스트레스 사건 직후 망상과 환청, 와해된 행동이 급작스럽게 발병하였으나, 발병 후 2주 만에 모든 증상이 완전히 사라지고 이전의 기능 수준으로 완전히 회복되었다. 이 질환의 진단명은 무엇인가?",
+        options: ["단기정신병적장애", "조현양상장애", "조현병", "적응장애"],
+        answer: 0,
+        explanation: "단기정신병적장애(Brief Psychotic Disorder)는 정신병적 증상이 1일 이상 나타나지만 '1개월 미만' 지속된 후 병전 상태로 완전히 회복되는 것이 특징입니다."
+      },
+      {
+        chapter: "제3장. 조현병 스펙트럼",
+        question: "망상, 환각, 와해된 언어, 음성 증상 등 조현병의 진단기준 A 증상과 함께, 질환의 활성기 기간 동안 주요우울 삽화나 조증 삽화 같은 기분장애 증상이 동시에 지속적으로 나타나는 장애는 무엇인가?",
+        options: ["조현정동장애", "조현병", "I형 양극성장애", "망상장애"],
+        answer: 0,
+        explanation: "조현정동장애(Schizoaffective Disorder)는 조현병의 진단기준 A(정신병적 사고장애)와 기분 삽화(우울증 또는 조증)가 동시에 나타나는 질환입니다."
+      },
+      {
+        chapter: "제3장. 조현병 스펙트럼",
+        question: "환청이나 와해된 언어 같은 조현병의 다른 증상은 전혀 동반되지 않으며, '직장 상사가 나를 미행하고 있다'는 등 기괴하지 않은 체계적인 망상만이 최소 1개월 이상 지속될 때 내리는 진단명은 무엇인가?",
+        options: ["망상장애", "조현병", "단기정신병적장애", "조현양상장애"],
+        answer: 0,
+        explanation: "망상장애(Delusional Disorder)는 환각이나 지리멸렬한 언어 등 조현병 활성기 증상 없이, 현실에서 일어날 수 있는 체계화된 망상만 '최소 1개월 이상' 지속되는 질환입니다."
+      },
+      {
+        chapter: "제3장. 조현병 스펙트럼",
+        question: "망상, 환각, 와해된 언어, 심하게 와해된 행동이나 긴장성 행동, 음성 증상 중 2가지 이상의 활성기 증상을 포함하여, 전구기나 잔류기를 포함한 장애의 전체 징후가 최소 6개월 이상 지속될 때 내리는 진단명은?",
+        options: ["조현병", "조현양상장애", "조현정동장애", "단기정신병적장애"],
+        answer: 0,
+        explanation: "조현병(Schizophrenia)은 1개월 이상의 활성기 증상을 반드시 포함하여, 장애의 지속적 징후가 '최소 6개월 이상' 계속될 때 확정 진단됩니다."
+      },
+
+      // [4주차] 기분과 관련된 장애
+      {
+        chapter: "제4장. 기분관련장애",
+        question: "9세 남아가 상황에 맞지 않게 사소한 지적에도 물건을 부수고 폭언을 퍼붓는 극심한 분노 발작을 주 3회 이상 보이고, 발작이 없는 평상시에도 거의 매일 지속적인 과민 기분을 보인다. 아동기 양극성장애의 과잉 진단을 줄이기 위해 신설된 이 진단명은?",
+        options: ["파괴적 기분조절부전장애", "I형 양극성장애", "품행장애", "적대적 반항장애"],
+        answer: 0,
+        explanation: "파괴적 기분조절부전장애(DMDD)는 만 6세~18세에 진단되며, 주 3회 이상의 비정상적 분노 발작과 발작 사이의 지속적 과민성을 보이는 기분장애입니다."
+      },
+      {
+        chapter: "제4장. 기분관련장애",
+        question: "평생 단 한 번도 입원이 필요하거나 일상이 심각하게 붕괴되는 조증 삽화는 겪지 않았으나, 평소보다 의기양양하고 활동적인 경조증 삽화(최소 4일 지속)와 심각한 주요우울 삽화가 번갈아 반복되는 장애는 무엇인가?",
+        options: ["II형 양극성장애", "I형 양극성장애", "순환성 장애", "지속성 우울장애"],
+        answer: 0,
+        explanation: "II형 양극성장애는 심각한 조증 삽화 없이, '경조증 삽화(최소 4일)'와 '주요우울 삽화'가 번갈아 나타납니다. (조증 삽화가 1회라도 있으면 I형 양극성장애)."
+      },
+      {
+        chapter: "제4장. 기분관련장애",
+        question: "비정상적으로 들뜨고 팽창된 자존감, 수면 욕구의 현저한 감소, 사고의 비약, 무모한 쾌락적 활동 몰두를 특징으로 하는 조증 삽화(최소 1주일 지속 또는 입원 필요)가 평생 1회 이상 나타났을 때 진단되는 장애는?",
+        options: ["I형 양극성장애", "II형 양극성장애", "순환성 장애", "주요우울장애"],
+        answer: 0,
+        explanation: "I형 양극성장애(Bipolar I Disorder)는 우울 삽화의 유무와 상관없이, 최소 1주일 이상 지속되는 심각한 '조증 삽화'가 단 한 번이라도 발생하면 진단됩니다."
+      },
+      {
+        chapter: "제4장. 기분관련장애",
+        question: "성인의 경우 최소 2년 이상(아동·청소년 1년) 동안 우울한 기분이 없는 날보다 있는 날이 더 많으며, 만성적인 저조한 기분과 함께 식욕 부진, 불면 또는 과다수면, 피로감이 지속되는 우울장애는 무엇인가?",
+        options: ["지속성 우울장애(기분저하증)", "주요우울장애", "순환성 장애", "적응장애"],
+        answer: 0,
+        explanation: "지속성 우울장애(Persistent Depressive Disorder, 구 기분부전장애)는 성인 기준 최소 2년 동안 만성적으로 지속되는 우울감을 특징으로 합니다."
+      },
+      {
+        chapter: "제4장. 기분관련장애",
+        question: "우울한 기분 또는 흥미/즐거움의 상실 중 하나를 반드시 포함하여, 불면, 식욕 변화, 무가치감, 피로감, 자살 생각 등 5가지 이상의 증상이 연속 2주 이상 지속되며 일상 기능을 저해하는 질환은?",
+        options: ["주요우울장애", "지속성 우울장애", "적응장애", "월경전 불쾌장애"],
+        answer: 0,
+        explanation: "주요우울장애(Major Depressive Disorder)는 핵심 2가지(우울 기분, 흥미 상실) 중 1가지 이상을 포함하여 총 5가지 이상의 증상이 '2주 연속' 지속될 때 진단됩니다."
+      },
+
+      // [5주차] 불안장애
+      {
+        chapter: "제5장. 불안장애",
+        question: "특별한 신체 질환이 없음에도 갑자기 심장이 터질 듯 뛰고 질식할 것 같으며 죽을 것 같은 공포를 느끼는 발작이 예기치 않게 발생했다. 이후 '또 발작이 오면 어쩌지'라는 예기불안이 1개월 이상 지속될 때 내리는 진단명은?",
+        options: ["공황장애", "광장공포증", "특정공포증", "범불안장애"],
+        answer: 0,
+        explanation: "공황장애(Panic Disorder)는 예기치 못한 공황발작의 반복과 함께, 추가 발작에 대한 지속적인 걱정(예기불안)이나 부적응적 회피가 '1개월 이상' 지속될 때 진단됩니다."
+      },
+      {
+        chapter: "제5장. 불안장애",
+        question: "대중교통 이용, 열린 공간, 밀폐 공간, 줄 서기/군중 속, 집 밖 혼자 있기 등 5가지 상황 중 2가지 이상의 상황에서 공황이나 무력감이 생겼을 때 즉각 벗어나기 어렵거나 도움받기 어려울 것이라는 공포로 해당 장소를 지속 회피하는 장애는?",
+        options: ["광장공포증", "사회불안장애", "분리불안장애", "특정공포증"],
+        answer: 0,
+        explanation: "광장공포증(Agoraphobia)은 곤란한 증상이 생겼을 때 탈출이나 도움 요청이 어려울 것으로 예상되는 5가지 장소 중 2가지 이상에 대해 극심한 공포와 회피를 보입니다."
+      },
+      {
+        chapter: "제5장. 불안장애",
+        question: "집 등 친숙한 환경에서는 말을 유창하게 잘하지만, 말을 해야 하는 학교나 유치원 같은 특정 사회적 상황에서만 일관되게 말을 하지 않으며, 이러한 침묵이 최소 1개월 이상 지속될 때 진단되는 장애는?",
+        options: ["선택적 함구증", "사회불안장애", "언어장애", "분리불안장애"],
+        answer: 0,
+        explanation: "선택적 함구증(Selective Mutism)은 언어 능력이 충분함에도 불구하고 말을 해야 하는 특정 상황에서 일관되게 말을 하지 않는 장애로 '최소 1개월 이상' 지속되어야 합니다."
+      },
+      {
+        chapter: "제5장. 불안장애",
+        question: "주요 애착 대상과 떨어지는 것에 대해 극심한 공포와 고통을 느끼며, 부모에게 해로운 일이 생길까 봐 끊임없이 걱정하고 등교 거부나 악몽, 복통·두통을 호소하는 장애는 무엇인가?",
+        options: ["분리불안장애", "선택적 함구증", "광장공포증", "사회불안장애"],
+        answer: 0,
+        explanation: "분리불안장애(Separation Anxiety Disorder)는 애착 대상과의 분리에 대해 발달 수준에 맞지 않게 과도한 공포와 신체 증상을 호소하는 장애입니다 (아동 4주, 성인 6개월 이상)."
+      },
+      {
+        chapter: "제5장. 불안장애",
+        question: "특정 대상에 국한되지 않고 건강, 재정, 가족의 안녕, 직업적 책임 등 일상생활의 수많은 사소한 일들에 대해 만성적이고 통제하기 힘든 과도한 불안과 걱정이 최소 6개월 이상 지속되는 장애는?",
+        options: ["범불안장애", "공황장애", "적응장애", "강박장애"],
+        answer: 0,
+        explanation: "범불안장애(GAD)는 광범위한 일상 사건들에 대해 만성적으로 통제 불가능한 걱정과 부동성 불안을 경험하는 상태로, 최소 6개월 이상 지속될 때 진단됩니다."
+      },
+      {
+        chapter: "제5장. 불안장애",
+        question: "낯선 사람과의 대화나 대중 앞에서의 발표 등 타인에게 관찰되거나 부정적 평가(당황스러움, 수치심)를 받을 수 있는 사회적 상황을 극심하게 두려워하고 회피하는 장애는 무엇인가?",
+        options: ["사회불안장애(사회공포증)", "광장공포증", "특정공포증", "선택적 함구증"],
+        answer: 0,
+        explanation: "사회불안장애(Social Anxiety Disorder)는 타인으로부터 부정적인 평가나 수치심을 받을 수 있는 사회적 상황에 노출되는 것을 극도로 두려워하고 회피하는 장애입니다."
+      },
+
+      // [6주차] 강박 및 관련 장애
+      {
+        chapter: "제6장. 강박 및 관련 장애",
+        question: "실제 타인이 볼 때는 전혀 눈에 띄지 않거나 매우 미미한 신체 외모(코 모양, 피부 결 등)의 결함에 병적으로 집착하여, 하루 수시간씩 거울을 들여다보고 결점을 가리기 위해 과도하게 치장하며 일상을 피하는 장애는?",
+        options: ["신체변형장애", "강박장애", "피부뜯기장애", "건강염려증"],
+        answer: 0,
+        explanation: "신체변형장애(Body Dysmorphic Disorder)는 남들이 보기에 없거나 미미한 신체적 결함에 집착하여 반복적인 거울 확인, 위장, 비교 행동을 지속하는 장애입니다."
+      },
+      {
+        chapter: "제6장. 강박 및 관련 장애",
+        question: "원치 않는 침투적 강박사고(오염, 확인, 공격적 충동 등)와, 이로 인한 극심한 불안을 줄이기 위해 엄격한 규칙대로 반복하는 손 씻기, 문 확인하기 등의 강박행동으로 하루 1시간 이상을 소모하는 장애는?",
+        options: ["강박장애", "범불안장애", "신체변형장애", "저장장애"],
+        answer: 0,
+        explanation: "강박장애(OCD)는 침투적 강박사고와 이를 중화하기 위한 강박행동이 핵심이며, 하루 1시간 이상 시간을 소모하게 만듭니다. (대표적 치료법: 노출 및 반응방지/ERP)."
+      },
+      {
+        chapter: "제6장. 강박 및 관련 장애",
+        question: "물건의 실제 가치와 관계없이 소지품을 버리는 것에 극심한 고통을 느껴 버리지 못하고 끝없이 쌓아두어, 방이나 거실 등 주거 공간이 물건으로 가득 차 정상적인 본래 용도를 상실하는 장애는?",
+        options: ["저장장애", "강박장애", "적응장애", "신체변형장애"],
+        answer: 0,
+        explanation: "저장장애(Hoarding Disorder, 수집광)는 물건의 실제 가치와 무관하게 버리는 것을 어려워하여 생활공간이 물건에 의해 잠식되는 장애입니다."
+      },
+      {
+        chapter: "제6장. 강박 및 관련 장애",
+        question: "자신의 두피나 눈썹 등 신체에 난 털을 반복적으로 뽑아 뚜렷한 탈모로 이어지며, 멈추려고 애쓰지만 실패하여 일상 기능 손상을 초래하는 강박관련장애는 무엇인가?",
+        options: ["털뽑기장애(발모광)", "피부뜯기장애", "신체변형장애", "틱장애"],
+        answer: 0,
+        explanation: "털뽑기장애(발모광, Trichotillomania)는 털을 반복적으로 뽑아 탈모를 유발하는 장애로, 행동치료인 '습관반전훈련(HRT)'이 효과적으로 사용됩니다."
+      },
+      {
+        chapter: "제6장. 강박 및 관련 장애",
+        question: "자신의 피부를 반복적으로 비비거나 비틀고 뜯어서 뚜렷한 피부 병변(상처)을 만들며, 이를 숨기려 옷이나 화장으로 가리고 멈추려 하지만 계속 실패하는 장애는?",
+        options: ["피부뜯기장애", "털뽑기장애", "신체변형장애", "상동증적 운동장애"],
+        answer: 0,
+        explanation: "피부뜯기장애(Excoriation Disorder)는 피부를 반복적으로 뜯어 병변으로 이어지는 장애로, 충동을 자각하고 경쟁 반응을 유도하는 습관반전훈련 등이 적용됩니다."
+      },
+
+      // [7주차] 외상/스트레스 및 해리장애 (★ 8번 해리성 정체감 장애까지)
+      {
+        chapter: "제7장. 외상 및 스트레스 장애",
+        question: "심각한 화재 사고를 직접 겪은 환자가 사고 장면이 자꾸 떠오르는 침습 증상, 화재 장소 회피, 극심한 과각성 반응을 호소하고 있다. 이 증상이 사고 직후 발생하여 현재 3주째 지속되고 있다면 내려지는 진단명은?",
+        options: ["급성스트레스장애", "외상후 스트레스 장애(PTSD)", "적응장애", "공황장애"],
+        answer: 0,
+        explanation: "외상 사건 노출 후 나타나는 스트레스 반응이 '3일 이상 ~ 1개월 이내' 지속될 경우 급성스트레스장애(Acute Stress Disorder)로 진단합니다. (1개월 이상 지속되면 PTSD)."
+      },
+      {
+        chapter: "제7장. 외상 및 스트레스 장애",
+        question: "실제적이거나 위협적인 죽음, 심각한 부상, 성폭력 등 극심한 외상 사건에 노출된 후 침습적 기억(플래시백, 악몽), 관련 단서 회피, 부정적 인지 및 기분 변화, 과각성 증상이 최소 1개월 이상 지속될 때 내리는 진단명은?",
+        options: ["외상후 스트레스 장애(PTSD)", "급성스트레스장애", "적응장애", "지속성 비탄장애"],
+        answer: 0,
+        explanation: "외상후 스트레스 장애(PTSD)는 극심한 외상 사건 노출 후 핵심 증상들이 '1개월 이상' 장기 지속되어 심각한 기능 손상을 초래할 때 진단됩니다."
+      },
+      {
+        chapter: "제7장. 외상 및 스트레스 장애",
+        question: "실직이나 이혼, 전학 등 인식 가능한 생활 스트레스 사건이 시작된 지 3개월 이내에 정서적·행동적 증상이 발생하였으나, 스트레스 요인이 종결된 후 6개월 이상은 지속되지 않는 장애는 무엇인가?",
+        options: ["적응장애", "급성스트레스장애", "주요우울장애", "외상후 스트레스 장애"],
+        answer: 0,
+        explanation: "적응장애(Adjustment Disorder)는 식별 가능한 일상 스트레스 후 3개월 이내에 발병하며, 스트레스 요인이 끝난 후 6개월 이상 지속되지 않는 것이 핵심 기준입니다."
+      },
+      {
+        chapter: "제7장. 외상 및 스트레스 장애",
+        question: "극단적인 방임이나 양육 결핍을 경험한 아동이 고통스러운 상황에서도 성인 보호자에게 위안을 구하지 않고, 위로하는 것에도 거의 반응하지 않는 등 정서적으로 극도로 위축·회피된 행동을 보이는 장애는?",
+        options: ["반응성 애착장애", "탈억제성 사회적 유대감 장애", "자폐스펙트럼장애", "분리불안장애"],
+        answer: 0,
+        explanation: "반응성 애착장애(Reactive Attachment Disorder)는 심각한 방임으로 인해 주 양육자에게 위안을 구하지 않고 정서적으로 심하게 위축·억제된 애착 반응을 보입니다 (발달 연령 최소 9개월 이상)."
+      },
+      {
+        chapter: "제7장. 외상 및 스트레스 장애",
+        question: "생후 초기 극단적인 양육 결핍을 겪은 아동이 낯선 성인에게 주저함 없이 다가가며, 과도하게 친근한 신체 접촉을 하고 낯선 사람에 대한 경계심이 완전히 결여된 탈억제 행동을 보이는 장애는?",
+        options: ["탈억제성 사회적 유대감 장애", "반응성 애착장애", "주의력결핍 과잉행동장애", "자폐스펙트럼장애"],
+        answer: 0,
+        explanation: "탈억제성 사회적 유대감 장애(Disinhibited Social Engagement Disorder)는 방임 경험 후 낯선 성인에 대한 조심성이나 경계심이 완전히 상실된 채 무분별하게 친밀감을 표현하는 장애입니다."
+      },
+      {
+        chapter: "제7장. 8번 해리성 정체감 장애 (범위 끝)",
+        question: "어린 시절 극심한 신체적·성적 학대를 겪은 내담자가 2개 이상의 완전히 구분되는 독립적인 성격 상태(하위 인격)를 보이며, 각 성격이 교대될 때마다 일상적인 망각으로는 설명할 수 없는 기억의 공백을 동반한다. 이번 중간고사 범위의 마지막 장애인 이 질환은?",
+        options: ["해리성 정체감 장애", "조현병", "해리성 기억상실증", "경계선 성격장애"],
+        answer: 0,
+        explanation: "해리성 정체감 장애(DID, 과거 다중인격)는 2개 이상의 독립된 성격 상태와 자아 주체감의 비연속성, 중요한 일상 기억의 공백을 동반하며 이번 중간고사 범위(7주차 8번)의 최종 진단명입니다."
+      }
+    ];
+
+    // ==========================================
+    // 앱 전역 상태 관리
+    // ==========================================
+    let currentRound = 1;             // 현재 회차 (1 ~ 10)
+    const MAX_ROUNDS = 10;            // 총 회차 수
+    let currentRoundQuestions = [];   // 현재 회차의 10문제
+    let currentQuestionIndex = 0;     // 현재 회차 내 문제 번호 (0 ~ 9)
+    let currentRoundScore = 0;        // 현재 회차 맞춘 개수
+    let totalScore = 0;               // 10회차 전체 맞춘 문제 수
+    let answeredCurrentQuestion = false;
+    let roundWrongAnswers = [];       // 현재 회차 오답 저장
+
+    // Fisher-Yates 배열 무작위 셔플 함수
+    function shuffle(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    // 새로운 회차 생성 (랜덤 10문항 추출 및 옵션 셔플)
+    function startRound(roundNum, reuseSame = false) {
+      currentRound = roundNum;
+      currentQuestionIndex = 0;
+      currentRoundScore = 0;
+      roundWrongAnswers = [];
+      answeredCurrentQuestion = false;
+
+      if (!reuseSame) {
+        // 문제 풀에서 10문제 무작위 추출
+        const shuffledPool = shuffle(MASTER_QUESTION_POOL);
+        currentRoundQuestions = shuffledPool.slice(0, 10).map(q => {
+          const originalAnsText = q.options[q.answer];
+          const shuffledOpts = shuffle(q.options);
+          return {
+            ...q,
+            options: shuffledOpts,
+            answer: shuffledOpts.indexOf(originalAnsText)
+          };
+        });
+      }
+
+      // UI 상태 전환
+      document.getElementById('round-indicator').textContent = `제 ${currentRound} 회차 / 총 ${MAX_ROUNDS}회차`;
+      document.getElementById('quiz-section').classList.remove('hidden');
+      document.getElementById('round-result-section').classList.add('hidden');
+      document.getElementById('final-graduation-section').classList.add('hidden');
+
+      renderCurrentQuestion();
+    }
+
+    // 현재 문제 화면 렌더링
+    function renderCurrentQuestion() {
+      answeredCurrentQuestion = false;
+      const q = currentRoundQuestions[currentQuestionIndex];
+
+      // 상단 바 업데이트
+      document.getElementById('progress-question-text').textContent = `문제 ${currentQuestionIndex + 1} / 10`;
+      document.getElementById('round-score-text').textContent = `이번 회차 점수: ${currentRoundScore} / 10`;
+      document.getElementById('progress-bar').style.width = `${((currentQuestionIndex + 1) / 10) * 100}%`;
+
+      // 문제 지문 & 챕터
+      document.getElementById('question-chapter-badge').textContent = q.chapter;
+      document.getElementById('question-title').textContent = q.question;
+
+      // 피드백 박스 숨김
+      document.getElementById('feedback-box').classList.add('hidden');
+
+      // 4지선다 버튼 렌더링
+      const optionsContainer = document.getElementById('options-list');
+      optionsContainer.innerHTML = '';
+
+      q.options.forEach((optText, idx) => {
+        const btn = document.createElement('button');
+        btn.className = "w-full text-left p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-white hover:bg-slate-50 hover:border-indigo-400 font-semibold text-xs sm:text-sm text-slate-800 transition flex items-center justify-between group shadow-sm active:scale-[0.99]";
+        btn.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-lg bg-slate-100 text-slate-600 font-bold flex items-center justify-center text-xs group-hover:bg-indigo-100 group-hover:text-indigo-700 transition">
+              ${idx + 1}
+            </span>
+            <span>${optText}</span>
+          </div>
+          <span class="indicator text-xs font-bold opacity-0 transition"></span>
+        `;
+        btn.onclick = () => handleOptionClick(idx);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // 보기 클릭 시 즉시 채점 및 해설 공개
+    function handleOptionClick(selectedIdx) {
+      if (answeredCurrentQuestion) return;
+      answeredCurrentQuestion = true;
+
+      const q = currentRoundQuestions[currentQuestionIndex];
+      const isCorrect = (selectedIdx === q.answer);
+
+      if (isCorrect) {
+        currentRoundScore += 1;
+        totalScore += 1;
+      } else {
+        roundWrongAnswers.push({
+          question: q.question,
+          userSelected: q.options[selectedIdx],
+          correct: q.options[q.answer],
+          explanation: q.explanation
+        });
+      }
+
+      // 옵션 버튼 스타일 상태 반영
+      const buttons = document.getElementById('options-list').querySelectorAll('button');
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        const indicator = btn.querySelector('.indicator');
+
+        if (idx === q.answer) {
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/80 font-bold text-xs sm:text-sm text-emerald-950 flex items-center justify-between shadow-sm";
+          indicator.textContent = "✓ 정답";
+          indicator.className = "indicator text-xs font-extrabold text-emerald-600 opacity-100";
+        } else if (idx === selectedIdx) {
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-2xl border-2 border-rose-400 bg-rose-50/80 font-bold text-xs sm:text-sm text-rose-950 flex items-center justify-between shadow-sm";
+          indicator.textContent = "✕ 오답";
+          indicator.className = "indicator text-xs font-extrabold text-rose-500 opacity-100";
+        } else {
+          btn.className = "w-full text-left p-3.5 sm:p-4 rounded-2xl border border-slate-200 bg-slate-50 opacity-40 text-xs sm:text-sm text-slate-400 flex items-center justify-between";
+        }
+      });
+
+      // 피드백 박스 노출
+      const feedbackBox = document.getElementById('feedback-box');
+      const statusEl = document.getElementById('feedback-status');
+      const detailEl = document.getElementById('feedback-detail');
+      const nextBtn = document.getElementById('next-question-btn');
+
+      feedbackBox.classList.remove('hidden');
+
+      if (isCorrect) {
+        feedbackBox.className = "mt-5 p-4 sm:p-5 rounded-2xl border border-emerald-200 bg-emerald-50/60";
+        statusEl.className = "flex items-center gap-1.5 font-extrabold text-emerald-800 text-sm sm:text-base mb-1.5";
+        statusEl.innerHTML = "<span>🎉 정확합니다!</span>";
+      } else {
+        feedbackBox.className = "mt-5 p-4 sm:p-5 rounded-2xl border border-rose-200 bg-rose-50/60";
+        statusEl.className = "flex items-center gap-1.5 font-extrabold text-rose-800 text-sm sm:text-base mb-1.5";
+        statusEl.innerHTML = `<span>💡 오답 (정답: <strong>${q.options[q.answer]}</strong>)</span>`;
+      }
+
+      detailEl.textContent = q.explanation;
+      document.getElementById('round-score-text').textContent = `이번 회차 점수: ${currentRoundScore} / 10`;
+
+      if (currentQuestionIndex === 9) {
+        nextBtn.innerHTML = `<span>이번 회차 성적 확인하기 📊</span>`;
+      } else {
+        nextBtn.innerHTML = `
+          <span>다음 문제로</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        `;
+      }
+    }
+
+    // 다음 문제 클릭 시
+    document.getElementById('next-question-btn').onclick = () => {
+      if (currentQuestionIndex < 9) {
+        currentQuestionIndex += 1;
+        renderCurrentQuestion();
+      } else {
+        showRoundResult();
+      }
+    };
+
+    // 회차 종료 화면 표시
+    function showRoundResult() {
+      document.getElementById('quiz-section').classList.add('hidden');
+      document.getElementById('round-result-section').classList.remove('hidden');
+
+      document.getElementById('result-round-badge').textContent = `제 ${currentRound} 회차 완료`;
+      document.getElementById('round-final-score').textContent = `${currentRoundScore} / 10`;
+
+      // 누적 정답률 계산
+      const answeredTotalCount = currentRound * 10;
+      const cumulatedRate = Math.round((totalScore / answeredTotalCount) * 100);
+      document.getElementById('total-cumulated-rate').textContent = `${cumulatedRate}%`;
+
+      // 오답 목록 표시
+      const wrongContainer = document.getElementById('wrong-answers-container');
+      wrongContainer.innerHTML = '';
+
+      if (roundWrongAnswers.length === 0) {
+        wrongContainer.innerHTML = `
+          <div class="p-4 text-center text-emerald-700 font-bold text-xs sm:text-sm">
+            ✨ 오답이 없습니다! 10문제 모두 완벽히 맞추셨습니다!
+          </div>
+        `;
+      } else {
+        const header = document.createElement('p');
+        header.className = "text-xs font-bold text-rose-700 mb-2.5";
+        header.textContent = `⚠️ 이번 회차에서 틀린 문제 (${roundWrongAnswers.length}개) - 복습 포인트:`;
+        wrongContainer.appendChild(header);
+
+        roundWrongAnswers.forEach((item, i) => {
+          const div = document.createElement('div');
+          div.className = "mb-2.5 pb-2.5 border-b border-slate-200 text-xs";
+          div.innerHTML = `
+            <p class="font-bold text-slate-800 mb-1 leading-snug">${i + 1}. ${item.question}</p>
+            <p class="text-rose-600 font-semibold mb-0.5">내가 고른 답: ${item.userSelected} ➔ <span class="text-emerald-700 font-bold">정답: ${item.correct}</span></p>
+            <p class="text-slate-500 text-[11px] leading-tight">${item.explanation}</p>
+          `;
+          wrongContainer.appendChild(div);
+        });
+      }
+
+      // 다음 회차 버튼 문구 설정
+      const nextRoundBtn = document.getElementById('next-round-btn');
+      if (currentRound >= MAX_ROUNDS) {
+        nextRoundBtn.textContent = "🏆 10회차 종합 최종 리포트 확인하기";
+        nextRoundBtn.onclick = showFinalGraduation;
+      } else {
+        nextRoundBtn.textContent = `다음 랜덤 10문제 생성 (제 ${currentRound + 1}회차 풀기) ➔`;
+        nextRoundBtn.onclick = () => startRound(currentRound + 1, false);
+      }
+    }
+
+    // 이번 회차 재도전 버튼
+    document.getElementById('retry-current-round-btn').onclick = () => {
+      // 재도전 시 누적 총점에서 이번 회차 점수 차감 후 다시 시작
+      totalScore -= currentRoundScore;
+      startRound(currentRound, true);
+    };
+
+    // 10회차 최종 완주 화면
+    function showFinalGraduation() {
+      document.getElementById('round-result-section').classList.add('hidden');
+      document.getElementById('final-graduation-section').classList.remove('hidden');
+
+      document.getElementById('total-final-score-display').textContent = `${totalScore} / 100`;
+
+      const evalEl = document.getElementById('final-evaluation-text');
+      if (totalScore >= 90) {
+        evalEl.textContent = "수석 합격 예감! 1주부터 7주차 8번까지의 진단명과 기간 감별 기준을 완벽하게 숙지하셨습니다.";
+      } else if (totalScore >= 75) {
+        evalEl.textContent = "우수한 성적입니다! 헷갈렸던 기간 기준(1개월 vs 6개월 등)만 시험 직전에 다시 점검하세요.";
+      } else {
+        evalEl.textContent = "10회차를 완주하며 기본 뼈대가 잡혔습니다. 1회차부터 다시 복습해 만점에 도전해보세요!";
+      }
+    }
+
+    // 1회차부터 전체 리셋
+    document.getElementById('restart-all-rounds-btn').onclick = () => {
+      totalScore = 0;
+      startRound(1, false);
+    };
+
+    // 앱 시작 시 1회차 로드
+    window.onload = () => {
+      startRound(1, false);
+    };
+  </script>
+</body>
+</html>
