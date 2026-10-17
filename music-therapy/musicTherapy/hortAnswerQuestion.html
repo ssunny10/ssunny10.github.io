@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>음악치료학 전범위 정밀 주관식 단답형 모의고사 (전수 상세 해설판)</title>
+  <title>음악치료학 전범위 정밀 주관식 단답형 모의고사 (장문형 실전판)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Pretendard", sans-serif; -webkit-tap-highlight-color: transparent; }
     body { background: #0f172a; color: #1e293b; display: flex; justify-content: center; padding: 12px; min-height: 100vh; }
@@ -21,9 +21,9 @@
     .hgroup { float: right; display: flex; gap: 6px; }
     .hbtn { background: #f1f5f9; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; color: #475569; cursor: pointer; }
     .hint { clear: both; background: #fef3c7; border: 1px solid #fde68a; border-radius: 10px; padding: 12px; font-size: 12px; color: #92400e; margin-bottom: 14px; display: none; line-height: 1.5; }
-    .qcard { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; margin-bottom: 16px; clear: both; }
-    .qcard p.lead { font-size: 11px; color: #4f46e5; font-weight: 800; margin-bottom: 6px; }
-    .qcard h2 { font-size: 13.5px; font-weight: 500; color: #0f172a; line-height: 1.7; white-space: pre-line; }
+    .qcard { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px; margin-bottom: 16px; clear: both; }
+    .qcard p.lead { font-size: 11.5px; color: #4f46e5; font-weight: 800; margin-bottom: 8px; }
+    .qcard h2 { font-size: 13.5px; font-weight: 500; color: #0f172a; line-height: 1.75; white-space: pre-line; }
     .qcard h2 strong { color: #312e81; font-weight: 800; }
     .inrow { display: flex; gap: 8px; margin-bottom: 6px; }
     .in { flex: 1; padding: 12px 14px; font-size: 15px; font-weight: 700; border: 2px solid #cbd5e1; border-radius: 12px; outline: none; }
@@ -44,21 +44,18 @@
     .witem { border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; margin-bottom: 10px; }
     .witem:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
-    /* 상세 해설 전용 스타일 */
     .detail-card { background: #ffffff; border: 1px solid #cbd5e1; border-radius: 10px; padding: 12px; margin-top: 8px; font-size: 12px; line-height: 1.65; }
     .detail-title { font-weight: 800; color: #4338ca; margin-bottom: 4px; display: block; font-size: 12.5px; }
     .detail-table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 11.5px; }
     .detail-table th, .detail-table td { border: 1px solid #cbd5e1; padding: 5px 8px; text-align: left; }
     .detail-table th { background: #f1f5f9; color: #1e293b; font-weight: 700; }
-    ul.detail-ul { padding-left: 18px; margin-top: 4px; }
-    ul.detail-ul li { margin-bottom: 3px; }
   </style>
 </head>
 <body>
   <div class="card">
     <header>
       <div class="badge-row">
-        <span class="badge-sub">음악치료학 석사과정 | 1~7장 전수 상세 해설판</span>
+        <span class="badge-sub">음악치료학 석사과정 | 1~7장 전수 장문형 주관식</span>
         <span id="rb" class="badge-rnd">제 1 회차 / 총 10회차</span>
       </div>
       <h1>음악치료학 정밀 주관식 단답형</h1>
@@ -76,7 +73,7 @@
       </div>
       <div id="hb" class="hint"></div>
       <div class="qcard">
-        <p class="lead">[교안 원문 임상 정의, 이론적 메커니즘 및 학술 용어]</p>
+        <p class="lead">[교안 원문 임상 정의, 상세 메커니즘 및 학술적 요건 제시]</p>
         <h2 id="qt">문제를 불러오는 중...</h2>
       </div>
       <div class="inrow">
@@ -104,215 +101,208 @@
 
   <script>
     var POOL = [
-      // 1장
+      // 1장 브루샤 정의
       {
         c: "제1장 음악치료의 정의와 정체성",
-        q: "브루샤(Bruscia, 2014)는 음악치료를 치료사가 다양한 음악적 경험의 요소들과 관계를 변화의 원동력으로 활용하여 내담자가 건강을 최적화하도록 돕는 이 과정으로 정의하였다. 치료사와 내담자 모두가 음악 경험으로 서로를 끊임없이 되돌아보는 능동적·이중적 과정을 뜻하는 이 핵심 개념은?",
+        q: "• <strong>학술적 원문 정의:</strong> 브루샤(Bruscia, 2014)는 저서 『Defining Music Therapy』에서 음악치료를 다음과 같이 정의함:\n" +
+           "\"음악치료는 치료사가 다양한 음악적 경험의 요소들과 그 과정에서 형성되는 관계를 변화의 원동력으로 활용하여, 내담자가 자신의 건강을 최적화하도록 돕는 <strong>이 과정</strong>이다.\"\n" +
+           "• <strong>임상적 의의:</strong> 일방적으로 음악을 들려주거나 제공하는 수동적 과정이 아니며, 치료사와 내담자 모두가 음악 경험을 매개로 서로의 반응을 끊임없이 되돌아보고 점검하며 치료적 변화를 이끌어내는 능동적·협력적 이중 과정을 의미함.\n\n" +
+           "브루샤가 음악치료의 가장 핵심적인 속성으로 규정한 이 용어는?",
         a: "성찰적 과정",
         s: ["성찰적 과정", "성찰적과정", "reflexive process"],
         ch: "ㅅㅊㅈ ㄱㅈ",
         ph: "치료사와 내담자가 상호작용 속에서 서로를 되돌아보는 이중적 과정",
         ex: `
           <div class="detail-card">
-            <span class="detail-title">📖 1. 브루샤(Bruscia, 2014)의 원문 정의 및 의의</span>
-            "Music therapy is a reflexive process wherein the therapist helps the client to optimize the client's health, using various facets of music experience and the relationships formed through them as the impetus for change."[cite: 7, 138]<br>
-            • <strong>의의 1 (상호작용 속 개입):</strong> 단순 음악 활동 제공에 그치지 않고 치료사-내담자 상호작용 속 음악적 개입이 치료적 변화를 유도함[cite: 7].<br>
-            • <strong>의의 2 (성찰적 협력):</strong> 내담자에게 일방적으로 제공하는 수동적 과정이 아니라, 치료사와 내담자 모두가 음악 경험을 통해 끊임없이 자신과 서로의 반응을 되돌아보는 이중적·능동적 과정임[cite: 7, 139].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">⚖️ 2. 성립 3대 조건과의 결합 (필요조건과 충분조건)</span>
-            ① 과학적 진단, ② 명확한 치료 목적과 체계적 계획, ③ 치료적 관계라는 3대 조건이 '음악적 경험' 안에서 동시에 충족될 때 비로소 전문적인 음악치료가 성립함 (하나라도 결여 시 치료 불성립)[cite: 6, 137, 138].
+            <span class="detail-title">📖 브루샤(Bruscia, 2014)의 원문 정의 및 의의 [교안 7, 138-139p]</span>
+            • <strong>정의:</strong> 치료사가 다양한 음악적 경험의 요소들과 관계를 변화의 원동력으로 삼아 내담자가 건강을 최적화하도록 돕는 <u>성찰적 과정(Reflexive Process)</u>[cite: 7, 138].<br>
+            • <strong>의의 1 (상호작용 속 개입):</strong> 단순 음악 제공에 그치지 않고 치료사-내담자 상호작용 속 개입이 치료적 변화를 유도함[cite: 7].<br>
+            • <strong>의의 2 (성찰적 협력):</strong> 치료사와 내담자 모두가 음악 경험을 통해 끊임없이 자신과 서로의 반응을 되돌아보는 이중적 과정임[cite: 7, 139].
           </div>
         `
       },
-      // 2장
+      // 4장 3가지 심리학적 이론
       {
-        c: "제2장 음악치료의 역사 및 철학",
-        q: "중세 9~10세기 이슬람 황금시대의 철학자로, 아리스토텔레스에 이어 '제2의 스승'이라 불리며 아랍 의학과 음악 이론을 접목하여 특정 음악 선법이 인간의 감정과 건강에 영향을 줄 수 있음을 주장한 선구자는?",
-        a: "알-파라비",
-        s: ["알-파라비", "알파라비", "al-farabi", "al farabi"],
-        ch: "ㅇ-ㅍㄹㅂ",
-        ph: "9~10세기 이슬람 황금시대, 아랍 의학과 선법 접목 선구자",
+        c: "제4장 음악과 인간 (2) 심리정서적 기능",
+        q: "• <strong>교안 원문 핵심:</strong> 같은 음악을 듣고도 사람마다, 상황마다 서로 다른 정서를 느끼는 이유를 설명하는 <strong>'세 가지 심리학적 이론'</strong>:\n" +
+           "1. <strong>관련성 이론 (Juslin & Västfjäll, 2008):</strong> 개인의 과거 기억 및 경험(삽화적 기억, 평가적 조건형성)과 결합되어 정서가 유발됨 (예: 자장가, 졸업식 노래).\n" +
+           "2. <strong>기대 이론 (Meyer, 1956):</strong> 음악 구조 자체에 대한 무의식적 예측, 그리고 그 예측의 충족이나 지연(기만 종지 등)에서 긴장과 해소가 발생함.\n" +
+           "3. <strong>이 이론 (Berlyne, 1971):</strong> 새로움, 복잡성 등의 자극이 유발하는 각성 수준과 쾌감 사이의 관계가 <strong>역U자형 곡선(분트 곡선)</strong>을 그리며, 너무 단순(지루함)하거나 너무 복잡(불쾌감)하지 않은 중간 수준에서 쾌감이 최대화됨 (예: 바흐의 푸가).\n\n" +
+           "각성 수준과 쾌감의 역U자형 균형을 설명하는 세 번째 이론의 명칭은?",
+        a: "최적 복잡성 이론",
+        s: ["최적 복잡성 이론", "최적복잡성이론", "최적 복잡성", "berlyne"],
+        ch: "ㅊㅈ ㅂㅈㅅ ㅇㄹ",
+        ph: "각성 수준과 쾌감의 역U자형 관계 (분트 곡선), Berlyne(1971)",
         ex: `
           <div class="detail-card">
-            <span class="detail-title">📜 1. 알-파라비(Al-Farabi, 870~950경)의 학술적 위상</span>
-            • 중세 서구의 신비주의적 관점(보에티우스의 천체의 조화 등)과 달리, 이슬람 황금시대에 <strong>아랍 의학과 음악 이론을 체계적으로 접목</strong>한 선구자[cite: 18, 171].<br>
-            • 특정 음악 선법(Makam)이 인간의 감정과 신체 건강에 직접적인 영향을 미칠 수 있음을 이론화함[cite: 18, 171].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">⏳ 2. 전근대 음악치료 사상 계보 대조</span>
-            • 고대: 피타고라스(우주의 조화, 영혼 불균형 교정), 플라톤(에토스-도덕성), 아리스토텔레스(카타르시스 정화)[cite: 17, 18, 170, 171]<br>
-            • 중세: 보에티우스(천체의 조화) vs <strong>알-파라비(의학·선법 접목)</strong>[cite: 18, 171]<br>
-            • 르네상스: 마르실리오 피치노(인문주의, 개인의 심리적 자원)[cite: 18, 171]<br>
-            • 계몽주의: 리처드 브로클레스비(신경계에 미치는 생리학적 자극, 정신병원 음악 활용 시초)[cite: 19, 172]
+            <span class="detail-title">📋 정서 유발 및 조절의 세 가지 심리학적 이론 비교 [교안 57, 222-223p]</span>
+            • <strong>관련성 이론:</strong> '이 사람에게 왜 특별한가' (개인적·경험적 층위)[cite: 57, 223]<br>
+            • <strong>기대 이론:</strong> '음악 구조가 왜 긴장과 이완을 만드는가' (음악 내적 층위, 기만종지)[cite: 57, 222, 223]<br>
+            • <strong>최적 복잡성 이론:</strong> '이 정도 자극이 왜 쾌적한가' (각성 수준 층위, 분트 곡선)[cite: 57, 222, 223]<br>
+            <em>$\rightarrow$ 세 이론은 대립하는 것이 아니라 서로 다른 층위를 설명하며 임상에서 동시에 작동함[cite: 57, 223].</em>
           </div>
         `
       },
-      // 3장
+      // 4장 3가지 구조적 요소
+      {
+        c: "제4장 음악과 인간 (2) 심리정서적 기능",
+        q: "• <strong>교안 원문 핵심:</strong> 음악이 인간의 정서를 조율하고 조절하는 핵심 통로가 되는 <strong>'세 가지 구조적 요소'</strong> [표 4-1]:\n" +
+           "1. <strong>멜로디:</strong> 음높이의 상승과 하강을 통해 기대와 긴장을 조율함 (상승 선율은 긴장 고조, 하강 선율은 이완/안정).\n" +
+           "2. <strong>화성:</strong> 협화음과 불협화음의 대비를 통해 감정적 만족과 긴장의 해소를 조절함 (불협화음이 협화음으로 해결될 때 카타르시스 강화).\n" +
+           "3. <strong>이 요소:</strong> 음의 길고 짧음, 강약이 반복되는 패턴으로, 심장박동이나 호흡과 같은 신체의 생리적 리듬과 직접 동조(Entrainment)하여 안정(규칙적 패턴, 행진곡) 또는 각성과 긴박감(불규칙 패턴, 당김음)을 유도함.\n\n" +
+           "신체 생리적 리듬과 직접 상호작용하는 이 구조적 요소는?",
+        a: "리듬",
+        s: ["리듬", "rhythm"],
+        ch: "ㄹㄷ",
+        ph: "생리적 리듬(심박·호흡)과 직접 동조(Entrainment)하는 구조적 요소",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📋 음악의 세 가지 구조적 요소와 정서적 작용 [교안 55-56, 220-221p]</span>
+            • <strong>멜로디:</strong> 선율의 상승·하강으로 기대와 긴장 조율 (자장가, 후렴구 도약)[cite: 55, 56, 220, 221]<br>
+            • <strong>리듬:</strong> 신체 리듬과 직접 동조되어 안정 또는 각성 유도 (행진곡, 당김음)[cite: 55, 56, 220, 221]<br>
+            • <strong>화성:</strong> 협화·불협화의 대비로 감정적 만족과 해소 조절 (기만종지 해결)[cite: 55, 56, 221]
+          </div>
+        `
+      },
+      // 3장 변인의 층위
       {
         c: "제3장 음악과 인간 (1) 신체생리적 기능",
-        q: "멜작과 월(Melzack & Wall, 1965)이 제시한 이론으로, 척수 수준에서 비통증성 청각 자극(음악)이 통증 신호 전달 경로를 먼저 선점함으로써 뇌로 통증 신호가 전달되는 것을 차단한다고 설명하는 통증 완화 기전 이론은?",
+        q: "• <strong>교안 표 3-2 원문:</strong> 공기의 압력 진동인 음파에서 출발하여 대뇌 청각피질에서 의미 있는 음악으로 조직화되기까지 거치는 <strong>'변인의 세 가지 층위'</strong>:\n" +
+           "1. <strong>물리적 변인:</strong> 진동, 주파수(Hz), 강도/진폭, 시간, 파동 등 외부 음파 자체의 물리량.\n" +
+           "2. <strong>감각적 변인:</strong> 귀의 감각기관이 감지하는 소리, 고저, 강약, 장단, 질감.\n" +
+           "3. <strong>이 층위 (변인):</strong> 뇌에서 통합·해석되어 비로소 음악적 실체로 인지되는 단계로, 음, 음고(Pitch), 세기(Loudness), 음가(Duration), 음색(Timbre)으로 구성됨.\n\n" +
+           "교안 필기에서 \"이 단계로 가게 되면 비로소 음악적인 인지가 된다\"고 강조한 변인의 층위는?",
+        a: "지각적 변인",
+        s: ["지각적 변인", "지각적변인"],
+        ch: "ㅈㄱㅈ ㅂㅇ",
+        ph: "음, 음고, 세기, 음가, 음색으로 구성되어 음악으로 완성되는 뇌의 단계",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📋 소리 $\rightarrow$ 음악, 변인의 층위 [교안 44, 197p, 표 3-2]</span>
+            • <strong>물리적 변인:</strong> 진동, 주파수, 강도, 시간, 파동[cite: 44, 197]<br>
+            • <strong>감각적 변인:</strong> 소리, 고저, 강약, 장단, 질감[cite: 44, 197]<br>
+            • <strong>지각적 변인:</strong> 음, 음고(Pitch), 세기(Loudness), 음가(Duration), 음색(Timbre)[cite: 44, 197]<br>
+            <em>정신물리학: 물리량(진폭 등)과 지각량(세기 등)은 1:1로 비례하지 않음[cite: 43, 196].</em>
+          </div>
+        `
+      },
+      // 5장 치료계획 수립 중요성
+      {
+        c: "제5장 음악치료 과정",
+        q: "• <strong>교안 슬라이드 원문:</strong> 「1) 치료계획 수립의 개념과 중요성: 치료계획 수립, 왜 중요한가」\n" +
+           "- 내담자의 현재 상태와 개별적 필요를 평가한 후, 치료 목표와 실행 전략을 체계적으로 설계하는 과정임.\n" +
+           "- 교안에서는 치료계획 수립이 <u>단순한 일정표 작성이 아니라</u>, 치료의 방향성과 구조를 결정하는 <strong>'이것'</strong>이라고 명시함.\n" +
+           "- 명확한 목표 설정과 단계적 접근을 통해 치료의 효과성과 효율성을 극대화하며 유연한 조정을 가능하게 함.\n" +
+           "- 내담자가 계획 수립에 함께 참여하면 신뢰·협력 관계가 강화되고 자기주도적 참여와 동기가 향상됨.\n\n" +
+           "단순 일정표 작성을 넘어 치료의 방향성과 구조를 결정한다고 서술된 핵심 용어는?",
+        a: "전략적 기획",
+        s: ["전략적 기획", "전략적기획"],
+        ch: "ㅈㄹㅈ ㄱㅎ",
+        ph: "치료의 방향성과 구조를 결정하는 기획 작업",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📋 치료계획 수립의 개념과 중요성 [교안 77, 262p]</span>
+            • <strong>본질:</strong> 단순한 일정표 작성이 아닌, 치료의 방향성과 구조를 결정하는 <u>'전략적 기획'</u>임[cite: 77, 262].<br>
+            • <strong>효과:</strong> 명확한 목표 설정과 단계적 접근으로 치료 효율을 극대화하고 유연한 수정 가능[cite: 77, 262].<br>
+            • <strong>내담자 참여 효과:</strong> 신뢰·협력 관계 강화 및 자기주도적 동기 향상[cite: 77, 262].
+          </div>
+        `
+      },
+      // 7장 NRMT
+      {
+        c: "제7장 음악치료방법 (2) 심화기법",
+        q: "• <strong>임상 및 철학적 배경:</strong> 작곡가 폴 노르도프(Paul Nordoff)와 특수교사 클라이브 로빈스(Clive Robbins)가 1950년대 말 창시한 창조적 음악치료(NRMT).\n" +
+           "• <strong>인간중심 철학 (Carl Rogers):</strong> 장애 유무나 기능적 결손과 관계없이 모든 인간 내면에 선천적으로 내재되어 있는 보편적이고 창조적이며 감정적인 진정한 자아를 뜻하는 구성개념.\n" +
+           "• <strong>치료 기전:</strong> 치료사의 피아노 즉흥연주와 관계적 음악하기를 통해 이 내면의 자아를 깨우고 자발적 표현을 유도함 (언어적 해석 불필요).\n\n" +
+           "NRMT에서 모든 인간에게 내재된 창조적 자아를 뜻하는 핵심 개념은?",
+        a: "음악아이",
+        s: ["음악아이", "음악 아동", "music child", "musicchild"],
+        ch: "ㅇㅇㅇㅇ",
+        ph: "모든 인간 안에 내재된 창조적·음악적 자아 (Music Child)",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📜 창조적 음악치료 (NRMT) 4대 핵심 개념 [교안 116, 313-314p]</span>
+            • <strong>음악아이 (Music Child):</strong> 모든 인간에 내재된 창조적·정서적 자아[cite: 116, 313].<br>
+            • <strong>음악 중심성:</strong> 음악을 치료 도구가 아닌 '치유 그 자체'로 규정 (지금-여기에서의 변화)[cite: 116, 314].<br>
+            • <strong>관계적 음악하기:</strong> 치료사는 지시자가 아닌 음악적 동료로서 공동 창조[cite: 116, 314].<br>
+            • <strong>특징:</strong> 피아노 연주 역량 중시, 2인 1조 진행, BMGIM/AMT와 달리 사후 언어 해석 불필요[cite: 115, 120, 318].
+          </div>
+        `
+      },
+      // 7장 NMT MIT
+      {
+        c: "제7장 음악치료방법 (2) 심화기법",
+        q: "• <strong>신경과학적 재활 배경:</strong> 마이클 타우트(Michael Thaut)의 신경학적 음악치료(NMT) 20여 개 표준화 기법 중 언어·의사소통 영역을 대표하는 기법.\n" +
+           "• <strong>작용 메커니즘:</strong> 좌뇌 뇌졸중이나 외상성 뇌손상으로 인해 표현성 언어 장애를 겪는 비유창성 브로카(Broca) 실어증 환자를 대상으로, 손상되지 않은 우뇌의 멜로디와 리듬 처리 경로를 활성화하여 말하기(언어 산출)를 촉진함 (Schlaug et al., 2010).\n\n" +
+           "멜로디와 리듬의 억양을 활용해 언어 회복을 유도하는 이 기법의 영문 공식 약어(3글자)는?",
+        a: "MIT",
+        s: ["MIT", "mit", "멜로디억양치료", "멜로디 억양 치료"],
+        ch: "ㅇㅇㅌ",
+        ph: "Melodic Intonation Therapy, 실어증 언어 산출 회복",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📋 NMT 3대 대표 기법 완벽 정리 [교안 123, 321p]</span>
+            • <strong>RAS (감각운동):</strong> 리듬적 청각 자극 $\rightarrow$ 뇌졸중/파킨슨 보행 재활[cite: 123, 321]<br>
+            • <strong>MIT (언어소통):</strong> 멜로디억양치료 $\rightarrow$ 우뇌 자극을 통한 실어증 환자 언어 산출 촉진[cite: 123, 321]<br>
+            • <strong>TIMP (운동인지):</strong> 치료적 악기연주 $\rightarrow$ 악기 배치를 통한 상지 운동 및 관절 가동 범위 재활[cite: 103, 123, 321]
+          </div>
+        `
+      },
+      // 7장 VPT 보컬홀딩
+      {
+        c: "제7장 음악치료방법 (2) 심화기법",
+        q: "• <strong>임상 이론:</strong> 다이앤 오스틴(Diane Austin, 2008)이 체계화한 성악심리치료(VPT)로, 대상관계이론과 신체지향 외상이론에 기반함.\n" +
+           "• <strong>작용 방식:</strong> 내담자가 즉흥 발성을 통해 억눌린 정서나 전언어적 신체 기억을 소리로 드러낼 때, 치료사가 피아노의 안정적인 2화음 반복 반주와 지속음으로 내담자의 불안을 받쳐주고 품어주어 안전한 심리적 표현 공간을 형성하는 핵심 기법.\n\n" +
+           "치료사가 안정된 화음으로 내담자의 정서를 지탱해 주는 이 기법은?",
+        a: "보컬 홀딩",
+        s: ["보컬 홀딩", "보컬홀딩", "vocal holding"],
+        ch: "ㅂㅋ ㅎㄷ",
+        ph: "치료사가 안정적인 반복 화음으로 내담자의 발성을 감싸 안아주는 기법",
+        ex: `
+          <div class="detail-card">
+            <span class="detail-title">📜 성악심리치료(VPT) 핵심 개념 및 매체 비교 [교안 125-126, 322-323p]</span>
+            • <strong>진짜 목소리 (Authentic Voice):</strong> 억압되지 않은 진정한 자기표현의 지표[cite: 125, 323].<br>
+            • <strong>보컬 홀딩 (Vocal Holding):</strong> 치료사가 안정적 화음으로 감정을 지탱해 주는 기법[cite: 125, 323].<br>
+            • <strong>AMT vs VPT:</strong> AMT는 몸 밖의 악기를 사용하여 심리적 거리를 확보하는 반면, VPT는 몸 안의 목소리를 직접 사용하여 전언어적 외상에 접근함[cite: 126, 323].
+          </div>
+        `
+      },
+      // 3장 관문통제이론
+      {
+        c: "제3장 음악과 인간 (1) 신체생리적 기능",
+        q: "• <strong>신경생리학적 이론:</strong> 멜작과 월(Melzack & Wall, 1965)이 제시한 통증 조절 메커니즘.\n" +
+           "• <strong>작용 기전:</strong> 척수 후각에는 통증 신호가 뇌로 전달되는 것을 조절하는 일종의 '문(Gate)'이 존재하는데, 음악과 같은 비통증성 청각 감각 자극이 통증 신호보다 먼저 신경 섬유 경로를 선점하면 게이트가 닫혀 뇌로 향하는 통증 신호 전달이 차단·억제됨.\n" +
+           "• <strong>의의:</strong> 음악의 진통 효과가 단순한 기분 전환이 아니라 척수 수준에서부터 작동하는 생리학적 현상임을 입증함.\n\n" +
+           "이 통증 조절 이론의 명칭은?",
         a: "관문통제이론",
         s: ["관문통제이론", "관문 통제 이론", "gate control theory"],
         ch: "ㄱㅁㅌㅈㅇㄹ",
         ph: "척수의 게이트(Gate)를 청각 자극이 선점하여 통증 차단",
         ex: `
           <div class="detail-card">
-            <span class="detail-title">📋 1. 관문통제이론(Gate Control Theory)의 메커니즘</span>
-            • 척수 후각에 통증 신호가 뇌로 전달되는 일종의 <strong>'관문(Gate)'</strong>이 존재함[cite: 47, 201].<br>
-            • 음악과 같은 비통증성 감각 자극이 통증 신호보다 먼저 신경 섬유 경로를 선점하면 게이트가 닫혀 뇌로 전달되는 통증 신호가 차단·경감됨[cite: 47, 201].<br>
-            • 의의: 통증 완화를 단순 '기분 전환'이 아닌 척수 수준의 신경생리학적 현상으로 입증함[cite: 202].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">🧠 2. 전공 심화: 통증 완화의 복합적 연쇄 경로</span>
-            관문통제이론 단독이 아니라, 뇌 수준에서의 <strong>엔도르핀 분비 촉진(천연 진통제)</strong>, 측좌핵 보상회로 활성화에 따른 주의 분산, 자율신경계 이완이 복합적으로 겹쳐 진통 효과를 완성함[cite: 32, 45, 47, 201, 202].
+            <span class="detail-title">📋 음악의 신체생리적 3대 임상 기능 [교안 47, 201-202p]</span>
+            • <strong>수면:</strong> 세로토닌 $\rightarrow$ 멜라토닌 유도, 60~80 bpm 느린 템포로 심박 안정, 코르티솔 감소[cite: 47, 201].<br>
+            • <strong>통증 완화:</strong> <u>관문통제이론</u>(척수 수준 통증 전달 차단) + 엔도르핀 분비 + 주의 분산[cite: 47, 201, 202].<br>
+            • <strong>신체 재활:</strong> 리듬적 청각 자극(RAS)을 통한 뇌신경 회로 재구성 (신경가소성)[cite: 47, 202].
           </div>
         `
       },
-      // 4장
-      {
-        c: "제4장 음악과 인간 (2)",
-        q: "정서 유발의 세 가지 심리학적 이론 중, 자극의 각성 수준과 쾌감 사이의 관계가 역U자형 곡선(분트 곡선)을 그리며, 너무 단순하거나 복잡하지 않은 중간 수준에서 쾌감이 최대화된다고 설명하는 이론은?",
-        a: "최적 복잡성 이론",
-        s: ["최적 복잡성 이론", "최적복잡성이론", "최적 복잡성", "berlyne"],
-        ch: "ㅊㅈ ㅂㅈㅅ ㅇㄹ",
-        ph: "역U자형 분트 곡선, 적당한 자극에서 쾌감 최대 (Berlyne, 1971)",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📋 1. 최적 복잡성 이론 (Berlyne, 1971) 핵심</span>
-            • 자극의 새로움·복잡성·불확실성이 유발하는 각성 수준과 쾌감 간의 <strong>역U자형 관계 (분트 곡선)</strong>.<br>
-            • 자극이 너무 단순하면 '지루함', 너무 복잡하면 '불쾌감/혼란'을 유발하며, 그 중간 지점에서 쾌감이 최대화됨 (예: 바흐의 푸가)[cite: 57, 222].<br>
-            • 임상 적용: 내담자의 연령과 기능 수준에 맞추어 지나치게 단순하거나 산만하지 않은 적정 복잡성의 음악을 선곡해야 하는 근거[cite: 57, 222].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">💡 2. 정서 유발 3대 심리학 이론의 차원 구분 (전공 심화)</span>
-            • <strong>관련성 이론 (Juslin):</strong> '이 사람에게 왜 특별한가' (개인적·경험적 차원 / 졸업식 노래, 자장가)[cite: 57, 222, 223]<br>
-            • <strong>기대 이론 (Meyer):</strong> '음악 구조가 왜 긴장과 이완을 만드는가' (음악 내적 차원 / 기만종지, 예측 지연)[cite: 57, 222, 223]<br>
-            • <strong>최적 복잡성 이론 (Berlyne):</strong> '이 정도의 자극이 왜 쾌적한가' (각성 수준 차원)[cite: 57, 222, 223]<br>
-            <em>$\rightarrow$ 실제 임상 현장에서는 세 이론의 메커니즘이 한 내담자에게 동시에 작동함[cite: 57, 223].</em>
-          </div>
-        `
-      },
-      // 5장
+      // 5장 사례개념화
       {
         c: "제5장 음악치료 과정",
-        q: "교안에서 치료계획 수립은 단순한 일정표 작성이 아니라 치료의 방향성과 구조를 결정하는 이것이라고 명시하였다. 무엇인가?",
-        a: "전략적 기획",
-        s: ["전략적 기획", "전략적기획"],
-        ch: "ㅈㄹㅈ ㄱㅎ",
-        ph: "단순 일정표 작성이 아닌 방향성과 구조를 결정",
+        q: "• <strong>임상 통합 절차:</strong> 진단평가 단계에서 관찰, 인터뷰, 설문지, 심리검사 등을 통해 수집된 다차원적 정보들을 종합하고 해석하는 작업.\n" +
+           "• <strong>임상적 의의:</strong> '내담자에 대해 무엇을 알아낼 것인가'에서 '알아낸 정보를 바탕으로 무엇을 할 것인가'로 초점을 이동시키는 핵심 기획 과정임.\n" +
+           "• <strong>다학제 소통:</strong> 상담학에서 유래한 용어로, 사회복지사, 임상심리사, 상담사 등과의 다학제 사례회의 및 슈퍼비전에서 쓰이는 공통 언어임.\n\n" +
+           "진단 정보를 통합 해석하여 치료 전략으로 연결하는 이 작업의 명칭은?",
+        a: "사례개념화",
+        s: ["사례개념화", "case conceptualization"],
+        ch: "ㅅㄹㄱㄴㅎ",
+        ph: "진단 정보를 통합 해석하여 치료 전략으로 전환하는 과정 (Case Conceptualization)",
         ex: `
           <div class="detail-card">
-            <span class="detail-title">📋 1. 치료계획 수립의 개념 및 중요성</span>
-            • <strong>정의:</strong> 내담자의 현재 상태와 개별적 필요를 평가한 후 치료 목표와 실행 전략을 체계적으로 설계하는 과정[cite: 77, 262].<br>
-            • <strong>본질:</strong> 단순한 일정표 작성이 아니라 <u>치료의 방향성과 구조를 결정하는 '전략적 기획'</u>임[cite: 77, 262].<br>
-            • <strong>효과:</strong> 명확한 목표 설정과 단계적 접근으로 치료의 효과성과 효율성을 극대화하며 진행 상황에 따라 유연하게 조정 가능[cite: 77, 262].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">🤝 2. 내담자 참여의 임상적 효과</span>
-            치료 계획 수립에 내담자가 주체적으로 참여함으로써 치료적 신뢰와 협력 관계가 강화되고, 선호와 목표가 반영되어 자기주도적 참여 동기가 비약적으로 상승함[cite: 77, 262].
-          </div>
-        `
-      },
-      {
-        c: "제5장 음악치료 과정",
-        q: "완전히 새로운 곡을 작곡하는 부담을 덜고, 내담자가 이미 알고 있는 친숙한 멜로디에 빈칸 채우기 형식으로 새 가사만 바꾸어 붙여 자기 생각과 감정을 언어화하도록 돕는 가창/작곡 기법은?",
-        a: "개사",
-        s: ["개사", "개사 기법", "개사기법", "lyric substitution"],
-        ch: "ㄱㅅ",
-        ph: "익숙한 멜로디에 가사만 교체, Lyric Substitution",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📋 1. 개사(Lyric Substitution) 기법의 개념</span>
-            완전히 새로운 곡을 작곡하는 부담 없이, 이미 익숙한 동요나 가요 멜로디 위에 새로운 가사를 바꾸어 붙여 짧은 시간 안에 자기감정과 생각을 안전하게 언어화하도록 돕는 능동적 가창 기법[cite: 84, 356].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">✏️ 2. 임상 실습 및 적용 예시</span>
-            • 빈칸 채우기 가사 틀 제공: "○○할 때 나는 □□한다"[cite: 84, 356]<br>
-            • 완성 예: "화가 날 때 나는 크게 숨을 쉰다"[cite: 84, 356]<br>
-            • 효과: 언어 표현이 서툴거나 정서적으로 민감한 내담자도 작은 성공 경험을 통해 정서적 카타르시스와 자기표현을 이룸[cite: 84, 356].
-          </div>
-        `
-      },
-      // 6장
-      {
-        c: "제6장 음악치료방법 (1)",
-        q: "NMT의 리듬 기반 감각운동 기법 중, 리듬·멜로디·화성 요소를 활용하여 시간, 공간, 힘의 단서를 제공함으로써 뻗기, 쥐기, 일어서기 등 기능적 동작 시퀀스를 구조화하는 기법의 약어는?",
-        a: "PSE",
-        s: ["PSE", "pse", "패턴화된 감각 강화", "패턴화된감각강화"],
-        ch: "ㅍㅅㅇ",
-        ph: "Patterned Sensory Enhancement, 시간·공간·힘의 단서 제공",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📋 1. 리듬 기반 치료(NMT) 3대 기법 비교 [표 6-5]</span>
-            <table class="detail-table">
-              <tr><th>기법명</th><th>작용 원리</th><th>임상 적용 대상</th></tr>
-              <tr><td><strong>RAS<br>(리듬적 청각 자극)</strong></td><td>선호 박자에 맞춘 리듬 제공 후 템포 5~10% 점진적 증감</td><td>뇌졸중·파킨슨병 환자의 보행 속도/대칭성 재활</td></tr>
-              <tr><td><strong>PSE<br>(패턴화된 감각 강화)</strong></td><td>음악 요소로 시간·공간·힘의 단서를 제공해 비리듬적 기능 동작 구조화</td><td>뇌손상 후 상지 기능, 균형 및 자세 전환(일어서기/뻗기)[cite: 103, 285]</td></tr>
-              <tr><td><strong>TIMP<br>(치료적 악기 연주)</strong></td><td>신체 위치에 맞게 악기를 전략적으로 배치하여 연주 동작으로 운동 유도</td><td>소근육 협응, 관절 가동 범위(ROM), 편마비 상지 기능 회복[cite: 103, 285]</td></tr>
-            </table>
-          </div>
-        `
-      },
-      // 7장
-      {
-        c: "제7장 음악치료방법 (2) 심화기법",
-        q: "노르도프-로빈스 창조적 음악치료(NRMT)에서 장애 유무와 무관하게 모든 인간 안에 내재되어 있는 보편적이고 창조적이며 감정적인 진정한 자아를 지칭하는 핵심 이론적 개념은?",
-        a: "음악아이",
-        s: ["음악아이", "음악 아동", "music child", "musicchild"],
-        ch: "ㅇㅇㅇㅇ",
-        ph: "모든 인간 안에 내재된 창조적·음악적 자아",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📜 1. NRMT의 4대 핵심 개념</span>
-            • <strong>음악아이 (Music Child):</strong> 모든 인간 안에 내재된 보편적 창조적·정서적 자아를 뜻하는 구성개념[cite: 116, 313].<br>
-            • <strong>음악 중심성:</strong> 음악을 단순 치료 도구가 아닌 '치유 그 자체'로 규정하며, 변화는 음악 안의 '지금-여기'에서 발생함[cite: 116, 314].<br>
-            • <strong>관계적 음악하기:</strong> 치료사는 지시자가 아닌 대등한 음악적 동료(Partner)로 기능하며 공동 창조 수행[cite: 116, 314].<br>
-            • <strong>즉흥 (Improvisation):</strong> 평가와 정답이 없는 안전한 공간에서 자기를 표현하는 창조적 과정[cite: 116, 313].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">🔄 2. 적용 5단계 & 타 심화기법 비교</span>
-            • 초기 평가 $\rightarrow$ 관계 형성 $\rightarrow$ 표현 발달 $\rightarrow$ 정서적 전환 $\rightarrow$ 종결 및 지속[cite: 116, 314]<br>
-            • BMGIM이나 AMT와 달리 음악적 상호작용 자체에서 치유가 완결되므로 <u>사후 언어적 해석 단계를 필수로 요구하지 않음</u>[cite: 120, 318].
-          </div>
-        `
-      },
-      {
-        c: "제7장 음악치료방법 (2) 심화기법",
-        q: "성악심리치료(VPT)에서 내담자가 즉흥 발성을 통해 취약한 감정을 소리로 낼 때, 치료사가 안정적인 반복음이나 화음으로 감정을 받쳐주어 안전한 심리적 표현 공간을 마련해 주는 핵심 기법은?",
-        a: "보컬 홀딩",
-        s: ["보컬 홀딩", "보컬홀딩", "vocal holding"],
-        ch: "ㅂㅋ ㅎㄷ",
-        ph: "치료사가 안정적인 화음으로 감정을 지탱해 주는 기법",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📜 1. 성악심리치료(VPT, Diane Austin) 핵심 개념</span>
-            • <strong>진짜 목소리 (Authentic Voice):</strong> 억압되지 않고 자신의 진정한 자아와 감정을 온전히 드러내는 자발적 표현[cite: 125, 323].<br>
-            • <strong>보컬 홀딩 (Vocal Holding):</strong> 내담자가 취약한 정서를 소리로 낼 때 치료사가 피아노의 2화음 반복 반주와 지탱하는 화음으로 감정을 품어주는 기법[cite: 125, 323].<br>
-            • <strong>자유연상 가창:</strong> 즉흥 노래를 통해 무의식적 주제와 억압된 정서를 안전하게 표출[cite: 125, 323].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">⚖️ 2. AMT vs VPT 매체 비교 (전공 심화)</span>
-            둘 다 정신역동 및 대상관계이론에 기반하지만, AMT는 신체 밖의 '악기'(심리적 거리감과 방어 허용)를 사용하는 반면, VPT는 신체 내부의 '목소리'(전언어적 영아기 기억 및 신체화된 트라우마에 직접 접촉)를 사용함.
-          </div>
-        `
-      },
-      {
-        c: "제7장 음악치료방법 (2) 심화기법",
-        q: "NMT 기법 중 우뇌의 선율과 리듬 경로를 자극하여 좌뇌 손상으로 인한 비유창성 브로카 실어증 환자의 언어 산출 회복을 돕는 기법의 공식 약칭(영어 3글자)은?",
-        a: "MIT",
-        s: ["MIT", "mit", "멜로디억양치료", "멜로디 억양 치료"],
-        ch: "ㅇㅇㅌ",
-        ph: "Melodic Intonation Therapy, 실어증 언어 산출 훈련",
-        ex: `
-          <div class="detail-card">
-            <span class="detail-title">📋 1. 멜로디억양치료(Melodic Intonation Therapy, MIT) 기전</span>
-            • 좌뇌 뇌졸중으로 인한 브로카(Broca) 비유창성 실어증 환자를 대상[cite: 123, 321].<br>
-            • 손상되지 않은 우반구의 멜로디·리듬 처리 신경망을 활성화하여 말하기(발화) 및 언어 산출 기능을 촉진 (Schlaug et al., 2010)[cite: 64, 123, 321].
-          </div>
-          <div class="detail-card">
-            <span class="detail-title">🧠 2. NMT가 과학적 근거를 강조하는 임상적 이유</span>
-            병원 다학제 환경(물리치료, 작업치료, 언어치료, 신경과)에서 fMRI 영상과 정량화된 지표로 치료 효과를 객관적으로 증명하고 의료진과 원활히 소통하기 위함[cite: 124, 321, 322].
+            <span class="detail-title">📋 사례개념화 (Case Conceptualization) 심층 해설 [교안 77, 262-263p]</span>
+            • <strong>개념:</strong> 수집된 진단 정보를 종합 해석하여 치료 실행 전략으로 바꾸는 작업[cite: 77, 262].<br>
+            • <strong>불일치의 해석:</strong> 정보원 간 불일치(예: 인터뷰는 '주의력 결핍'이나 관찰 결과 '특정 악기엔 집중')는 오류가 아닌 '선택적 주의력 보존'이라는 중요한 임상 단서로 재해석됨[cite: 75, 77, 260, 263].
           </div>
         `
       }
@@ -363,7 +353,7 @@
       c.style.display = "block";
       c.className = "fb " + (ok ? "fb-ok" : "fb-no");
       t.innerText = ok ? "🎉 정답입니다! 정확한 학술 용어입니다." : "💡 오답입니다. (작성 답안: " + v + ")";
-      d.innerHTML = "<p><strong>표준 정답:</strong> " + q.a + "</p>" + q.ex;
+      d.innerHTML = "<p style='font-size:13px; font-weight:800; margin-bottom:6px;'>표준 정답: " + q.a + "</p>" + q.ex;
       document.getElementById("rst").innerText = "정답: " + sc + " / 10";
       document.getElementById("nb").innerText = (idx===9 ? "회차 성적 확인하기 📊" : "다음 문제 ➔");
       document.getElementById("nb").focus();
