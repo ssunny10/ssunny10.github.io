@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>이상심리 - 제2장 신경발달장애: 지적장애</title>
+  <style>
+    :root {
+      --primary-color: #20448C;
+      --secondary-color: #186BD9;
+      --accent-color: #056CF2;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --memo-text: #64748b;
+      --memo-border: #cbd5e1;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: #ffffff;
+      padding: 2rem 2rem;
+      border-radius: 16px;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 10px 25px -5px rgba(32, 68, 140, 0.2);
+    }
+
+    header .subtitle {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    /* Single-line Tab bar */
+    .tab-bar {
+      display: flex;
+      flex-wrap: nowrap;          /* 줄바꿈 없이 한 줄 유지 */
+      overflow-x: auto;           /* 화면 폭이 좁은 모바일 등에서는 부드럽게 가로 스크롤 */
+      scrollbar-width: none;      /* Firefox 스크롤바 숨김 */
+      -webkit-overflow-scrolling: touch;
+      gap: 0.35rem;
+      background: #e2e8f0;
+      padding: 0.3rem;
+      border-radius: 10px;
+      margin-bottom: 1.25rem;
+    }
+
+    .tab-bar::-webkit-scrollbar {
+      display: none;              /* Chrome/Safari 스크롤바 숨김 */
+    }
+
+    .tab-button {
+      flex: 1 1 0;                /* 너비 균등 분할 */
+      min-width: 0;               /* flex 아이템 축소 허용 */
+      padding: 0.55rem 0.5rem;    /* 컴팩트한 패딩 */
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.82rem;         /* 작고 아담한 폰트 */
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      text-align: center;
+      white-space: nowrap;        /* 글자 줄바꿈 방지 */
+      text-overflow: ellipsis;
+      overflow: hidden;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .tab-button:hover {
+      color: var(--primary-color);
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    .tab-button:focus-visible {
+      outline: 2px solid var(--accent-color);
+      outline-offset: 1px;
+    }
+
+    .tab-button.active {
+      background: #ffffff;
+      color: var(--primary-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+      font-weight: 700;
+    }
+
+    /* Content Cards */
+    .tab-content {
+      display: none;
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      animation: fadeIn 0.2s ease-in-out;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(3px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-header {
+      margin-bottom: 1.15rem;
+      padding-bottom: 0.65rem;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .card-header h2 {
+      font-size: 1.3rem;
+      color: var(--primary-color);
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 1.4rem;
+      margin-bottom: 0.75rem;
+    }
+
+    li {
+      margin-bottom: 0.55rem;
+    }
+
+    .criteria-box {
+      background-color: #f1f5f9;
+      border-left: 4px solid var(--secondary-color);
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 0.9rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .criteria-list {
+      list-style-type: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .criteria-list li {
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .criteria-list li strong.marker {
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--secondary-color);
+      font-weight: 700;
+    }
+
+    .note-footer {
+      margin-top: 1.25rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--memo-border);
+      font-size: 0.85rem;
+      color: var(--memo-text);
+      line-height: 1.5;
+    }
+
+    .note-footer span.prefix {
+      color: #94a3b8;
+      font-weight: 500;
+      margin-right: 0.25rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag-item {
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.4rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2.2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="subtitle">이상심리 제2장 · 신경발달장애</div>
+      <h1>지적장애 (Intellectual Disability)</h1>
+    </header>
+
+    <!-- Single-line Tab bar -->
+    <nav class="tab-bar" role="tablist" aria-label="지적장애 주제 선택">
+      <button class="tab-button active" role="tab" aria-selected="true" aria-controls="panel-media" id="tab-media" onclick="switchTab(0)">미디어 사례</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-criteria" id="tab-criteria" onclick="switchTab(1)">진단기준</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-concepts" id="tab-concepts" onclick="switchTab(2)">개념 및 특징</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-causes" id="tab-causes" onclick="switchTab(3)">원인 및 유병률</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-intervention" id="tab-intervention" onclick="switchTab(4)">개입 및 치료</button>
+      <button class="tab-button" role="tab" aria-selected="false" aria-controls="panel-slowlearner" id="tab-slowlearner" onclick="switchTab(5)">느린 학습자</button>
+    </nav>
+
+    <!-- Content Panels -->
+    <!-- Tab 1: 미디어 사례 -->
+    <section class="tab-content active" id="panel-media" role="tabpanel" aria-labelledby="tab-media">
+      <div class="card-header">
+        <h2>관련 미디어 및 대중문화 속 사례</h2>
+      </div>
+      <p style="margin-bottom: 0.75rem;">지적장애를 다룬 주요 영화 및 미디어 작품:</p>
+      <div class="tags">
+        <span class="tag-item">🎬 아이 엠 샘 (I Am Sam)</span>
+        <span class="tag-item">🎬 포레스트 검프 (Forrest Gump)</span>
+        <span class="tag-item">🎬 나의 특별한 형제</span>
+        <span class="tag-item">📺 우리들의 블루스</span>
+      </div>
+    </section>
+
+    <!-- Tab 2: 임상적 특징 & 진단기준 -->
+    <section class="tab-content" id="panel-criteria" role="tabpanel" aria-labelledby="tab-criteria">
+      <div class="card-header">
+        <h2>임상적 특징 & DSM-5 진단기준</h2>
+      </div>
+      <p>발달 시기에 시작하여 개념, 사회, 실행 영역에서 <strong>지적 기능</strong>과 <strong>적응 기능</strong> 모두 결함이 있으며, 다음 3가지 진단 기준을 충족해야 합니다.</p>
+      
+      <div class="criteria-box">
+        <ul class="criteria-list">
+          <li>
+            <strong class="marker">A.</strong>
+            <strong>지적 기능의 결함 (IQ 결함):</strong> 임상 평가와 표준화된 개별 지능검사에서 추론, 문제 해결, 계획, 추상적 사고, 판단, 학습능력, 경험을 통한 학습 등의 결함이 있다.
+          </li>
+          <li>
+            <strong class="marker">B.</strong>
+            <strong>적응 기능의 결함:</strong> 개인의 독립과 사회적 책임감에 필요한 발달적, 사회문화적 기준을 충족시키지 못함. 지속적 지지 없이는 의사소통, 사회적 참여, 독립적 생활 등 일상 기능에 결함 발생.
+          </li>
+          <li>
+            <strong class="marker">C.</strong>
+            <strong>발달 시기 시작:</strong> 지적 결함과 적응 기능의 결함이 발달 시기 동안에 시작된다.
+          </li>
+        </ul>
+        <div style="font-size: 0.88rem; color: var(--text-muted); margin-top: 0.5rem;">
+          * 심각도 구분: 경도(Mild), 중등도(Moderate), 고도(Severe), 최고도(Profound)
+        </div>
+      </div>
+    </section>
+
+    <!-- Tab 3: 개념 변화 및 세부 특징 -->
+    <section class="tab-content" id="panel-concepts" role="tabpanel" aria-labelledby="tab-concepts">
+      <div class="card-header">
+        <h2>개념 변화 및 세부 특징</h2>
+      </div>
+      <ul>
+        <li><strong>명칭 변경:</strong> 기존 '정신지체' → <strong>'지적장애(지적 발달장애; Intellectual disability, Intellectual developmental disorder)'</strong>로 변경</li>
+        <li><strong>정의:</strong> 성별, 연령, 사회문화적 배경이 같은 또래에 비해 정신능력의 전반적 결함(IQ 70 미만) 및 일상 적응 기능 손상</li>
+        <li><strong>정신능력:</strong> 언어이해, 작업 기억, 인지 추론, 양적 추론, 추상적 사고, 인지적 효율성, 문제해결 등</li>
+        <li><strong>적응 기능:</strong> 개념적 · 사회적 · 실행적 영역에서의 기능 수행 정도</li>
+        <li><strong>진단 요건:</strong> 지능과 적응 기능에 대한 표준화된 검사 결과 필수</li>
+        <li><strong>취약점:</strong> 사회적 상황에 잘 속는 경향, 위험 인식 부족 및 순진한 행동으로 범죄 연루 위험 높음</li>
+      </ul>
+      <div class="note-footer">
+        <span class="prefix">※ 참고 메모:</span> 최근에는 IQ보다 적응기능을 더 많이 세분화/강조하고 있음
+      </div>
+    </section>
+
+    <!-- Tab 4: 원인 및 유병률 -->
+    <section class="tab-content" id="panel-causes" role="tabpanel" aria-labelledby="tab-causes">
+      <div class="card-header">
+        <h2>지적장애의 원인 및 유병률</h2>
+      </div>
+      <ul>
+        <li><strong>유병률:</strong> 전체 인구의 약 1% (고도 지적장애는 1,000명당 약 6명)</li>
+        <li><strong>성별 차이:</strong> 남자가 여자보다 60% 이상 높음</li>
+        <li><strong>유전 요인:</strong> 다운증후군, 취약 X 염색체(Fragile X syndrome) 등 유전자 이상</li>
+        <li><strong>임신 및 출산 과정:</strong>
+          <ul>
+            <li>태내알코올 증후군: 낮은 지능과 정신적 문제 동반</li>
+            <li>임산부의 풍진, 매독 감염 및 출산 과정의 이상</li>
+          </ul>
+        </li>
+        <li><strong>출생 후 요인:</strong> 저산소성 허혈성 손상, 외상성 두부 손상, 감염, 탈수초성 질환, 발작장애, 심각한 사회적 결핍, 중독(납, 수은), 독성 대사 증후군 등</li>
+      </ul>
+      <div class="note-footer">
+        <span class="prefix">※ 참고 메모:</span> 임신 시 술을 과다 섭취할 경우 태내알코올 증후군 위험
+      </div>
+    </section>
+
+    <!-- Tab 5: 개입 및 치료 -->
+    <section class="tab-content" id="panel-intervention" role="tabpanel" aria-labelledby="tab-intervention">
+      <div class="card-header">
+        <h2>지적장애의 개입 및 치료</h2>
+      </div>
+      <ul>
+        <li><strong>조기 개입의 중요성:</strong> 특수교육이나 통합교육을 통해 최소한의 일상생활 기본 적응 기술 및 기능 수준 유지 가능</li>
+        <li><strong>공병 및 동반 문제:</strong> 정서·행동 문제 경험 및 충동조절장애, 조울증 등 타 심리장애 동반 가능</li>
+        <li><strong>직업적 재활:</strong> 경도 지적장애의 경우 직업 훈련을 거쳐 보호 작업장(sheltered workshop)에서 근무 가능</li>
+      </ul>
+      <div class="note-footer">
+        <span class="prefix">※ 참고 메모:</span> 사실상 완치는 어려우나 반복 교육을 통해 훈련 가능 / 미디어·드라마에 주로 다뤄지는 사례는 중등도 수준
+      </div>
+    </section>
+
+    <!-- Tab 6: 경계선 지능 -->
+    <section class="tab-content" id="panel-slowlearner" role="tabpanel" aria-labelledby="tab-slowlearner">
+      <div class="card-header">
+        <h2>경계선 지능 (느린 학습자, Slow Learner)</h2>
+      </div>
+      <ul>
+        <li><strong>진단 기준:</strong> 표준화된 지능검사상 평균에서 -1SD ~ -2SD에 해당 (<strong>IQ 71~84</strong>)</li>
+        <li><strong>유병률:</strong> 전체 인구의 약 <strong>13.5%</strong></li>
+        <li><strong>주요 특징 및 문제:</strong>
+          <ul>
+            <li>성인기에 직업 및 사회적 부적응이 심화될 수 있음</li>
+            <li>부모에게 의존하게 되어 부모의 심리적, 경제적, 사회적 부담 가중</li>
+          </ul>
+        </li>
+      </ul>
+      <div class="note-footer">
+        <span class="prefix">※ 참고 메모:</span> 특수교육 대상자는 아님
+      </div>
+    </section>
+
+    <footer>
+      이상심리 2주차 강의자료 요약
+    </footer>
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.tab-content');
+
+    function switchTab(index) {
+      tabs.forEach((tab, i) => {
+        const isActive = i === index;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+
+      panels.forEach((panel, i) => {
+        panel.classList.toggle('active', i === index);
+      });
+    }
+
+    // Keyboard navigation (Left / Right arrow key support within tabs)
+    document.querySelector('.tab-bar').addEventListener('keydown', (e) => {
+      const activeElement = document.activeElement;
+      const index = Array.from(tabs).indexOf(activeElement);
+      if (index === -1) return;
+
+      if (e.key === 'ArrowRight') {
+        const nextIndex = (index + 1) % tabs.length;
+        tabs[nextIndex].focus();
+        switchTab(nextIndex);
+      } else if (e.key === 'ArrowLeft') {
+        const prevIndex = (index - 1 + tabs.length) % tabs.length;
+        tabs[prevIndex].focus();
+        switchTab(prevIndex);
+      }
+    });
+  </script>
+</body>
+</html>
