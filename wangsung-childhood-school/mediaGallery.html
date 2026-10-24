@@ -37,6 +37,34 @@
       display: block;
     }
 
+    /* 크게 보기 모드: 팝업을 화면 전체로 확장 (상단 헤더/하단 바 높이만큼 제외) */
+    #mediaModal.is-large .modal-outer {
+      padding: 0;
+    }
+    #mediaModal.is-large .modal-panel {
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      max-width: none;
+      max-height: none;
+      border-radius: 0;
+      border: 0;
+    }
+    #mediaModal.is-large .modal-media-area {
+      flex: 1;
+      min-height: 0;
+      padding: 0;
+    }
+    #mediaModal.is-large .modal-media-wrapper,
+    #mediaModal.is-large .modal-media-item {
+      max-width: 100vw;
+      max-height: calc(100vh - 120px);
+      max-height: calc(100dvh - 120px);
+    }
+    #mediaModal.is-large .modal-media-item {
+      border-radius: 0;
+    }
+
     /* 50x50 썸네일 규격 고정 */
     .thumb-btn {
       width: 50px;
@@ -118,8 +146,8 @@
     <div id="modalBackdrop" class="fixed inset-0 bg-black/85 backdrop-blur-sm" onclick="closeMediaModal()"></div>
 
     <!-- 팝업 본체 -->
-    <div class="fixed inset-0 z-10 flex items-center justify-center p-3 sm:p-6 pointer-events-none">
-      <div class="pointer-events-auto relative bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col items-center overflow-hidden max-w-[95vw] max-h-[95vh]">
+    <div class="modal-outer fixed inset-0 z-10 flex items-center justify-center p-3 sm:p-6 pointer-events-none">
+      <div class="modal-panel pointer-events-auto relative bg-slate-900 border border-slate-700/80 rounded-2xl shadow-2xl flex flex-col items-center overflow-hidden max-w-[95vw] max-h-[95vh]">
         
         <!-- 상단 헤더 바 (미디어 제목 및 X 닫기 버튼) -->
         <div class="w-full flex items-center justify-between px-4 py-2.5 bg-slate-950/90 border-b border-slate-800">
@@ -135,7 +163,7 @@
         </div>
 
         <!-- 미디어 표시 영역 (화면 70% 제한 및 중앙 정렬) -->
-        <div class="relative p-2 sm:p-4 flex items-center justify-center bg-black/75 overflow-hidden w-full">
+        <div class="modal-media-area relative p-2 sm:p-4 flex items-center justify-center bg-black/75 overflow-hidden w-full">
           <!-- 이전 버튼 (첫 번째 항목에서는 숨김) -->
           <button id="prevBtn" type="button" aria-label="이전 미디어" onclick="showPrevMedia()" class="absolute left-2 sm:left-3 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-black/60 text-white border border-slate-600/60 hover:bg-indigo-600 active:scale-95 transition-all focus:outline-none">
             <i data-lucide="chevron-left" class="w-5 h-5 sm:w-6 sm:h-6"></i>
@@ -157,16 +185,18 @@
           </div>
         </div>
 
-        <!-- 하단 영상 컨트롤 바 (Play / Stop 버튼) -->
-        <div id="videoControls" class="w-full px-4 py-3 bg-slate-950/95 border-t border-slate-800 flex items-center justify-center gap-3">
+        <!-- 하단 바 (영상 컨트롤 + 크게 보기 버튼, 사진/영상 공통 노출) -->
+        <div class="w-full px-4 py-3 bg-slate-950/95 border-t border-slate-800 flex flex-wrap items-center justify-center gap-3">
+        <!-- 영상 컨트롤 (Play / Stop 버튼, 영상일 때만 노출) -->
+        <div id="videoControls" class="flex items-center justify-center gap-3">
           <!-- 재생 (Play) 버튼 -->
-          <button id="playBtn" type="button" onclick="playModalVideo()" class="flex items-center gap-1.5 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-md shadow-indigo-600/30 active:scale-95 transition-all">
+          <button id="playBtn" type="button" onclick="playModalVideo()" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-md shadow-indigo-600/30 active:scale-95 transition-all">
             <i data-lucide="play" class="w-4 h-4 fill-current"></i>
             <span>재생 (Play)</span>
           </button>
           
           <!-- 정지 (Stop) 버튼 -->
-          <button id="stopBtn" type="button" onclick="stopModalVideo()" class="flex items-center gap-1.5 px-4 py-2 bg-rose-600 hover:bg-rose-500 active:bg-rose-700 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-md shadow-rose-600/30 active:scale-95 transition-all">
+          <button id="stopBtn" type="button" onclick="stopModalVideo()" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-rose-600 hover:bg-rose-500 active:bg-rose-700 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-md shadow-rose-600/30 active:scale-95 transition-all">
             <i data-lucide="square" class="w-4 h-4 fill-current"></i>
             <span>정지 (Stop)</span>
           </button>
@@ -176,6 +206,13 @@
             <span id="videoStatusDot" class="w-2 h-2 rounded-full bg-slate-500"></span>
             <span id="videoStatusText">정지됨</span>
           </div>
+        </div>
+
+          <!-- 크게 보기 / 원래 크기 토글 버튼 -->
+          <button id="zoomBtn" type="button" onclick="toggleLargeView()" class="flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-slate-700 hover:bg-slate-600 active:bg-slate-800 text-white rounded-xl text-xs sm:text-sm font-semibold shadow-md active:scale-95 transition-all">
+            <svg id="zoomIcon" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+            <span id="zoomText">크게 보기</span>
+          </button>
         </div>
 
       </div>
@@ -318,6 +355,12 @@
     const videoStatusText = document.getElementById('videoStatusText');
     const prevBtn = document.getElementById('prevBtn');
     const nextBtn = document.getElementById('nextBtn');
+    const zoomText = document.getElementById('zoomText');
+    const zoomIcon = document.getElementById('zoomIcon');
+
+    // 크게 보기 아이콘 (확대 / 축소)
+    const ZOOM_IN_ICON = '<path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/>';
+    const ZOOM_OUT_ICON = '<path d="M4 14h6v6"/><path d="M20 10h-6V4"/><path d="M14 10l7-7"/><path d="M3 21l7-7"/>';
 
     // 팝업에 현재 표시 중인 항목의 인덱스
     let currentMediaIndex = 0;
@@ -466,9 +509,23 @@
     }
 
     /**
+     * 크게 보기 모드 토글 (하단 '크게 보기' 버튼)
+     */
+    function setLargeView(isLarge) {
+      mediaModal.classList.toggle('is-large', isLarge);
+      zoomText.textContent = isLarge ? '원래 크기' : '크게 보기';
+      zoomIcon.innerHTML = isLarge ? ZOOM_OUT_ICON : ZOOM_IN_ICON;
+    }
+
+    function toggleLargeView() {
+      setLargeView(!mediaModal.classList.contains('is-large'));
+    }
+
+    /**
      * 레이어 팝업 닫기 (X 버튼 및 배경 클릭 시)
      */
     function closeMediaModal() {
+      setLargeView(false);
       if (!modalVideo.paused) {
         modalVideo.pause();
       }
